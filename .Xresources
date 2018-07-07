@@ -1,0 +1,36 @@
+
+*.foreground:   #f1f1f1
+*.background:   #261f39
+*.cursorColor:  #f1f1f1
+*.color0:       #1b1d1e
+*.color8:       #505354
+*.color1:       #d90e79
+*.color9:       #fe207b
+*.color2:       #98de00
+*.color10:      #b6e354
+*.color3:       #fd5d77
+*.color11:      #fea182
+*.color4:       #03cbca
+*.color12:      #2dfcde
+*.color5:       #473b6b
+*.color13:      #6e719c
+*.color6:       #fecf87
+*.color14:      #fef184
+*.color7:       #ccccc6
+*.color15: #f8f8f2
+
+rofi.color-window: argb:EE373B47, #373B47
+rofi.color-normal: argb:00373B47, #737783, argb:00373B47, argb:00373B47, #f9f9f9
+rofi.color-urgent: argb:00373B47, #cc6666, argb:e54b5160, argb:00373B47, #f9f9f9
+rofi.color-active: argb:00373B47, #65acff, argb:e44b5160, argb:00373B47, #f9f9f9
+rofi.width: 50
+rofi.lines: 10
+rofi.font: Open Sans Light 25
+rofi.bw: 0
+rofi.padding: 40
+rofi.eh: 1
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+rofi.show-icons: true
+rofi.location: 0
+rofi.modi: window,run,drun

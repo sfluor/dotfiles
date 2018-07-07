@@ -2,7 +2,8 @@
 
 Sfluor dotfiles
 
-To link the dotfiles simply execute the `link.sh` script
+To link the dotfiles simply execute the `dotfiles.sh` script in your home directory:
+`wget -O - https://raw.githubusercontent.com/sfluor/dotfiles/master/dotfiles.sh | sh -`
 
 ## i3
 
