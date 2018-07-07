@@ -228,7 +228,7 @@ bindsym Print exec maim -s | xclip -selection clipboard -t image/png
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Wallpaper 
-exec_always feh --bg-fill /home/sfluor/Images/street7.png
+exec_always feh --bg-fill $HOME/.config/wallpaper.png
 
 # Enable touchpad tap
 exec_always xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
@@ -237,7 +237,7 @@ exec_always xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabl
 exec_always compton -f
 
 # pywal restore last theme
-exec_always wal -R
+# exec_always wal -R
 
 # Turn on Numlock
 exec_always numlockx on
