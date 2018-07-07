@@ -13,6 +13,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias tree="tree -C"
 
+# Alias to manage dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+
 alias sshpi="ssh pi@82.243.4.245 -i ~/.ssh/perso_rsa"
 
 # The next line updates PATH for the Google Cloud SDK.
