@@ -2,7 +2,7 @@
 
 Sfluor dotfiles
 
-To link the dotfiles simply execute the `link.sh` script
+To link the dotfiles simply execute the `dotfiles.sh` script
 
 ## i3
 
