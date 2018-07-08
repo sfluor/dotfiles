@@ -242,5 +242,8 @@ exec_always compton -f
 # Turn on Numlock
 exec_always numlockx on
 
+# Redshift
+exec --no-startup-id redshift || redshift -l 48.68:2.13
+
 # Systray
 exec_always --no-startup-id nm-applet
