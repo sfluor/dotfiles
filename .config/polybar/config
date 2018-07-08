@@ -22,15 +22,12 @@ color7 = ${xrdb:color7}
 
 [bar/top]
 # monitor = ${env:MONITOR:eDP-1}
-width = 98%
+width = 100%
 height = 40
 radius = 4.0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-
-border-left-size = 35 # margin left
-border-top-size = 15
 
 padding-left = 0
 padding-right = 3
