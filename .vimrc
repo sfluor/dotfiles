@@ -40,6 +40,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
  call dein#add('easymotion/vim-easymotion')
  call dein#add('tpope/vim-surround')
+ call dein#add('ntpeters/vim-better-whitespace')
 
  if !has('nvim')
    call dein#add('roxma/nvim-yarp')
@@ -125,6 +126,11 @@ set mouse=a
 " Update time for git gutters
 set updatetime=100
 
+" Do not create swap files or backup files
+set nobackup
+set nowritebackup
+set noswapfile
+
 " Color scheme
 set termguicolors     " enable true colors support
 let ayucolor="mirage" " for mirage version of theme
@@ -143,6 +149,9 @@ noremap <leader>s :Startify<CR>
 
 " Ack shortcut
 map <leader>a :Ack<space>
+
+" Center screen
+nnoremap <space> zz
 
 " Git shortcuts
 map <leader>gs :Gstatus<CR>
