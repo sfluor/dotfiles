@@ -137,6 +137,17 @@ let ayucolor="mirage" " for mirage version of theme
 colorscheme ayu
 let g:enable_italic_font = 1
 
+" Show context after search
+set scrolloff=10
+
+" Center after goto search result
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
 " -----------------
 " Shortcuts
 " -----------------
