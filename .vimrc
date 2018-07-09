@@ -220,6 +220,8 @@ let g:go_highlight_fields = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
+au FileType go nmap <leader>o <Plug>(go-doc)
+au FileType go nmap <leader>in <Plug>(go-info)
 
 " JS settings
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
