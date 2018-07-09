@@ -19,11 +19,11 @@ alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 alias sshpi="ssh pi@82.243.4.245 -i ~/.ssh/perso_rsa"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "/$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then source "/$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
-export GOPATH="/$HOME/go"
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
+export GOPATH="$HOME/go"
 export PATH="$HOME/.cargo/bin:$PATH:$GOPATH/bin"
 # The next line enables shell command completion for gcloud.
-if [ -f "/$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then source "/$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
 # z cd
 . /usr/local/bin/z.sh
