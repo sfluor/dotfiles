@@ -213,24 +213,33 @@ vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 " -----------------
 
 " Go settings
-let g:go_fmt_command = "goimports"
-let g:go_highlight_types = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_operators = 1
-au FileType go nmap <leader>o <Plug>(go-doc)
-au FileType go nmap <leader>in <Plug>(go-info)
+augroup go_file
+    autocmd!
+    let g:go_fmt_command = "goimports"
+    let g:go_highlight_types = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_fields = 1
+    let g:go_highlight_function_calls = 1
+    let g:go_highlight_extra_types = 1
+    let g:go_highlight_operators = 1
+    au FileType go nmap <leader>o <Plug>(go-doc)
+    au FileType go nmap <leader>in <Plug>(go-info)
+augroup END
 
 " JS settings
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-" prettier
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+augroup js_file
+    autocmd!
+    autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+    " prettier
+    let g:prettier#autoformat = 0
+    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+augroup END
 
 " Python settings
-autocmd BufWritePost *.py execute ':Black'
+augroup py_file
+    autocmd!
+    autocmd BufWritePost *.py execute ':Black'
+augroup END
 
 " -----------------
 " Plugins configuration
@@ -245,7 +254,10 @@ nnoremap <C-p> :GFiles<CR>
 let g:deoplete#enable_at_startup = 1
 
 " Deoplete Close autopreview after completion
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup autocomplete
+    autocmd!
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup END
 
 " Ulti-snippets
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
