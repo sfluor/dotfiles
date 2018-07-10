@@ -152,11 +152,23 @@ nnoremap g# g#zz
 " Shortcuts
 " -----------------
 
+" Exit insert mod quickly
+inoremap jj <esc>
+
+" Edit vimrc shortcut
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Source vimrc shortcut
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Uppercase current word in insert mode
+inoremap <C-u> <esc>viwUi
+
 " Shortcut to replace last search
 noremap <leader>r :%s///gc<left><left><left>
 
 " Startify shortcut
-noremap <leader>s :Startify<CR>
+noremap <leader>st :Startify<CR>
 
 " Ack shortcut
 noremap <leader>a :Ack<space>
