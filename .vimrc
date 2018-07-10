@@ -159,16 +159,16 @@ noremap <leader>r :%s///gc<left><left><left>
 noremap <leader>s :Startify<CR>
 
 " Ack shortcut
-map <leader>a :Ack<space>
+noremap <leader>a :Ack<space>
 
 " Center screen
 nnoremap <space> zz
 
 " Git shortcuts
-map <leader>gs :Gstatus<CR>
-map <leader>gc :Gcommit -m
-map <leader>gpur :Gpull
-map <leader>gpus :Gpush
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gc :Gcommit -m
+noremap <leader>gpur :Gpull
+noremap <leader>gpus :Gpush
 
 " Disable arrow keys
 noremap <Up> <NOP>
@@ -203,7 +203,7 @@ nnoremap gb :ls<CR>:b<Space>
 tnoremap <ESC> <C-\><C-n>:q!<CR>:bd bin/zsh<CR>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<CR>
+noremap <leader>x :e ~/buffer.md<CR>
 
 " Search current selection
 vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
