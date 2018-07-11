@@ -277,3 +277,21 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Powerline font for the airline module
 let g:airline_powerline_fonts=1
+
+" -----------------
+" Custom Functions
+" -----------------
+
+augroup custom_functions
+    autocmd!
+    command! -nargs=1 Halp :call s:Halp(<f-args>)
+    nnoremap <leader>? :Halp<space>
+
+    function! s:Halp(query)
+        let cmd = 'curl -s cheat.sh/' . &filetype ."/" . a:query
+        redraw!
+        let &makeprg=cmd
+        make!
+        " copen
+    endfunction
+augroup END
