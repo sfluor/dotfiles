@@ -288,8 +288,8 @@ augroup custom_functions
     nnoremap <leader>? :Halp<space>
 
     function! s:Halp(...)
-        let query = join(a:000)
-        let cmd = 'curl -s "cheat.sh/' . &filetype . '/' . query . '"'
+        let query = join(a:000, "+")
+        let cmd = 'curl -s cheat.sh/' . &filetype . '/' . query
         redraw!
         let &makeprg=cmd
         make!
