@@ -284,14 +284,14 @@ let g:airline_powerline_fonts=1
 
 augroup custom_functions
     autocmd!
-    command! -nargs=1 Halp :call s:Halp(<f-args>)
+    command! -nargs=+ Halp :call s:Halp(<f-args>)
     nnoremap <leader>? :Halp<space>
 
-    function! s:Halp(query)
-        let cmd = 'curl -s cheat.sh/' . &filetype ."/" . a:query
+    function! s:Halp(...)
+        let query = join(a:000)
+        let cmd = 'curl -s "cheat.sh/' . &filetype . '/' . query . '"'
         redraw!
         let &makeprg=cmd
         make!
-        " copen
     endfunction
 augroup END
