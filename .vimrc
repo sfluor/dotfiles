@@ -202,6 +202,7 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
+
 " Fast saving
 nmap <leader>w :w!<CR>
 
@@ -220,6 +221,9 @@ noremap <leader>x :e ~/buffer.md<CR>
 " Search current selection
 vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 
+" Easier shortcut to go to beginning/end of line
+noremap H ^
+noremap L _
 " -----------------
 " Languages
 " -----------------
@@ -258,7 +262,8 @@ augroup END
 " -----------------
 
 " Remap easymotion keystroke
-map <space> <Plug>(easymotion-prefix)
+map <space> <plug>(easymotion-prefix)
+map <space><space> <plug>(easymotion-w)
 
 " FZF settings
 let g:fzf_layout = { 'down': '~20%' }
