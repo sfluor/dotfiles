@@ -11,7 +11,6 @@ if dein#load_state('~/.cache/dein')
  call dein#begin('~/.cache/dein')
 
  call dein#add('~/.cache/dein')
- call dein#add('mileszs/ack.vim')
  call dein#add('Shougo/deoplete.nvim')
  call dein#add('vim-airline/vim-airline')
  call dein#add('fatih/vim-go')
@@ -171,7 +170,7 @@ noremap <leader>r :%s///gc<left><left><left>
 noremap <leader>st :Startify<CR>
 
 " Ack shortcut
-noremap <leader>a :Ack<space>
+noremap <leader>a :Ag<CR>
 
 " Center screen
 nnoremap <space> zz
