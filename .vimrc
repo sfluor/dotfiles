@@ -153,7 +153,7 @@ nnoremap g# g#zz
 " -----------------
 
 " Exit insert mod quickly
-inoremap jj <esc>
+inoremap jk <esc>
 
 " Edit vimrc shortcut
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
