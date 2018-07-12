@@ -257,6 +257,9 @@ augroup END
 " Plugins configuration
 " -----------------
 
+" Remap easymotion keystroke
+nmap <space> <Plug>(easymotion-prefix)
+
 " FZF settings
 let g:fzf_layout = { 'down': '~20%' }
 nnoremap <leader>$ :Tags<CR>
