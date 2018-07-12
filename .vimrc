@@ -258,7 +258,7 @@ augroup END
 " -----------------
 
 " Remap easymotion keystroke
-nmap <space> <Plug>(easymotion-prefix)
+map <space> <Plug>(easymotion-prefix)
 
 " FZF settings
 let g:fzf_layout = { 'down': '~20%' }
