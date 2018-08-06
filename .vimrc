@@ -40,6 +40,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('easymotion/vim-easymotion')
  call dein#add('tpope/vim-surround')
  call dein#add('ntpeters/vim-better-whitespace')
+ call dein#add('ervandew/supertab')
 
  if !has('nvim')
    call dein#add('roxma/nvim-yarp')
