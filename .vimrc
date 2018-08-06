@@ -178,6 +178,7 @@ noremap <leader>st :Startify<CR>
 
 " Ack shortcut
 noremap <leader>a :Ag<CR>
+noremap <leader>/ :Lines<CR>
 
 " Center screen
 nnoremap <space> zz
@@ -203,6 +204,9 @@ vmap <leader>y "+y
 " Shortcut to open tagbar
 nmap <leader>b :TagbarToggle<CR>
 
+" Shortcut to open netrw
+noremap <leader>p :Explore<CR>
+
 " Shortcut to navigate through windows
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
@@ -213,7 +217,7 @@ nnoremap <leader>l <C-w>l
 nmap <leader>w :w!<CR>
 
 " Sudo write in case of permission denied
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " Jump to Buffer utility
 nnoremap gb :ls<CR>:b<Space>
@@ -260,12 +264,15 @@ augroup END
 " Python settings
 augroup py_file
     autocmd!
-    autocmd BufWritePost *.py execute ':Black'
+    " autocmd BufWritePost *.py execute ':Black'
 augroup END
 
 " -----------------
 " Plugins configuration
 " -----------------
+
+" Netrw config
+let g:netrw_liststyle = 3
 
 " Remap easymotion keystroke
 map <space> <plug>(easymotion-prefix)
