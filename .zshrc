@@ -4,7 +4,9 @@ ZSH_THEME="oh-my-via/via"
 # Plugins
 plugins=(
   git
-  k
+  z
+  docker docker-compose vagrant
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -24,9 +26,6 @@ export GOPATH="$HOME/go"
 export PATH="$HOME/.cargo/bin:$PATH:$GOPATH/bin"
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
-
-# z cd
-. /usr/local/bin/z.sh
 
 # Docker compose up shortcut
 dcu () {
