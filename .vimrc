@@ -282,6 +282,10 @@ map <space><space> <plug>(easymotion-w)
 let g:fzf_layout = { 'down': '~20%' }
 nnoremap <leader>$ :Tags<CR>
 nnoremap <C-p> :GFiles<CR>
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
 
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
