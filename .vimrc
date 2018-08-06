@@ -132,7 +132,13 @@ set nowritebackup
 set noswapfile
 
 " Color scheme
-set termguicolors     " enable true colors support
+" Enable true color support
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+  set termguicolors
+  set term=xterm-256color
+endif
 let ayucolor="mirage" " for mirage version of theme
 colorscheme ayu
 let g:enable_italic_font = 1
