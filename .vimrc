@@ -34,7 +34,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('prettier/vim-prettier')
  call dein#add('terryma/vim-multiple-cursors')
  call dein#add('styled-components/vim-styled-components')
- call dein#add('ayu-theme/ayu-vim')
+ call dein#add('chriskempson/base16-vim')
  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
  call dein#add('easymotion/vim-easymotion')
@@ -139,8 +139,7 @@ if exists('+termguicolors')
   set termguicolors
   set term=xterm-256color
 endif
-let ayucolor="mirage" " for mirage version of theme
-colorscheme ayu
+colorscheme base16-snazzy
 let g:enable_italic_font = 1
 
 " Show context after search
