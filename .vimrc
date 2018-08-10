@@ -70,6 +70,10 @@ set hidden
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
+" Intuitive line moves
+noremap j gj
+noremap k gk
+
 " Syntax highlighting
 syntax on
 
