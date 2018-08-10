@@ -7,6 +7,7 @@ plugins=(
   z
   docker docker-compose vagrant
   zsh-syntax-highlighting
+  extract
 )
 
 source $ZSH/oh-my-zsh.sh
