@@ -17,15 +17,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-alias tree="tree -C"
-
-# Alias to manage dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
-
-alias sshpi="ssh pi@82.243.4.245 -i ~/.ssh/perso_rsa"
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
 export GOPATH="$HOME/go"
@@ -43,4 +34,5 @@ dcu () {
     fi
 }
 
+source ~/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
