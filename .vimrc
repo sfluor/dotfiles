@@ -10,7 +10,6 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('~/.cache/dein')
  call dein#begin('~/.cache/dein')
 
- call dein#add('vim-syntastic/syntastic')
  call dein#add('~/.cache/dein')
  call dein#add('christoomey/vim-tmux-navigator')
  call dein#add('Shougo/deoplete.nvim')
@@ -43,6 +42,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('tpope/vim-surround')
  call dein#add('ntpeters/vim-better-whitespace')
  call dein#add('ervandew/supertab')
+ call dein#add('w0rp/ale')
 
  if !has('nvim')
    call dein#add('roxma/nvim-yarp')
@@ -275,11 +275,6 @@ augroup END
 " -----------------
 " Plugins configuration
 " -----------------
-
-" Syntactic settings
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'govet']
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
 
 " Netrw config
 let g:netrw_liststyle = 3
