@@ -1,0 +1,11 @@
+[user]
+	name = Sami Tabet
+	email = sami.tabet@datadoghq.com
+[core]
+	editor = vim
+[github]
+    user = sfluor
+[init]
+	templatedir = ~/.git_template
+[help]
+	autocorrect = 1
