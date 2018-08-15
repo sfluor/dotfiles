@@ -30,7 +30,6 @@ if dein#load_state('~/.cache/dein')
  call dein#add('sheerun/vim-polyglot')
  call dein#add('mhinz/vim-startify')
  call dein#add('ambv/black')
- call dein#add('majutsushi/tagbar')
  call dein#add('ryanoasis/vim-devicons')
  call dein#add('prettier/vim-prettier')
  call dein#add('terryma/vim-multiple-cursors')
@@ -166,6 +165,9 @@ nnoremap g# g#zz
 " Exit insert mod quickly
 inoremap jk <esc>
 
+" Faster command line
+nnoremap ; :
+
 " Edit vimrc shortcut
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
@@ -206,20 +208,12 @@ nmap <leader>t :Deol<CR>
 " Shortcut to copy to clipboard
 vmap <leader>y "+y
 
-" Shortcut to open tagbar
-nmap <leader>b :TagbarToggle<CR>
-
 " Shortcut to open netrw
 noremap <leader>p :Explore<CR>
 
-" Shortcut to navigate through windows
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
-
 " Fast saving
 nmap <leader>w :w!<CR>
+nnoremap s :w<CR>
 
 " Sudo write in case of permission denied
 command! W w !sudo tee % > /dev/null
@@ -230,15 +224,9 @@ nnoremap gb :ls<CR>:b<Space>
 " Map ESC to exit key for deol terminal
 tnoremap <ESC> <C-\><C-n>:q!<CR>:bd bin/zsh<CR>
 
-" Quickly open a markdown buffer for scribble
-noremap <leader>x :e ~/buffer.md<CR>
-
 " Search current selection
 vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 
-" Easier shortcut to go to beginning/end of line
-noremap H ^
-noremap L _
 " -----------------
 " Languages
 " -----------------
