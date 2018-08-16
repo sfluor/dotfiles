@@ -158,6 +158,10 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+" Trick to reverse completion tab
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
 " -----------------
 " Shortcuts
 " -----------------
@@ -183,9 +187,10 @@ noremap <leader>r :%s///gc<left><left><left>
 " Startify shortcut
 noremap <leader>st :Startify<CR>
 
-" Ack shortcut
+" Fzf shortcuts
 noremap <leader>a :Ag<CR>
 noremap <leader>/ :Lines<CR>
+noremap <leader>f :Files<CR>
 
 " Center screen
 nnoremap <space> zz
