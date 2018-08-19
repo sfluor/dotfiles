@@ -37,8 +37,8 @@ if dein#load_state('~/.cache/dein')
  call dein#add('chriskempson/base16-vim')
  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
- call dein#add('easymotion/vim-easymotion')
  call dein#add('tpope/vim-surround')
+ call dein#add('justinmk/vim-sneak')
  call dein#add('ntpeters/vim-better-whitespace')
  call dein#add('ervandew/supertab')
  call dein#add('w0rp/ale')
@@ -158,10 +158,6 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" Trick to reverse completion tab
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
 " -----------------
 " Shortcuts
 " -----------------
@@ -191,6 +187,7 @@ noremap <leader>st :Startify<CR>
 noremap <leader>a :Ag<CR>
 noremap <leader>/ :Lines<CR>
 noremap <leader>f :Files<CR>
+noremap <leader>b :Buffers<CR>
 
 " Center screen
 nnoremap <space> zz
@@ -269,12 +266,13 @@ augroup END
 " Plugins configuration
 " -----------------
 
+" Sneak
+let g:sneak#label = 1
+map <CR> <Plug>Sneak_;
+nmap <space> <Plug>Sneak_s
+
 " Netrw config
 let g:netrw_liststyle = 3
-
-" Remap easymotion keystroke
-map <space> <plug>(easymotion-prefix)
-map <space><space> <plug>(easymotion-w)
 
 " FZF settings
 let g:fzf_layout = { 'down': '~20%' }
