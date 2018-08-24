@@ -10,6 +10,7 @@ export OHMYVIA_CONTEXT_HOSTNAME="empty"
 plugins=(
   git
   z
+  zsh-autosuggestions
   docker docker-compose vagrant
   zsh-syntax-highlighting
   extract
