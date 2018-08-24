@@ -32,7 +32,6 @@ if dein#load_state('~/.cache/dein')
  call dein#add('ambv/black')
  call dein#add('ryanoasis/vim-devicons')
  call dein#add('prettier/vim-prettier')
- call dein#add('terryma/vim-multiple-cursors')
  call dein#add('styled-components/vim-styled-components')
  call dein#add('chriskempson/base16-vim')
  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
@@ -165,9 +164,6 @@ nnoremap g# g#zz
 " Exit insert mod quickly
 inoremap jk <esc>
 
-" Faster command line
-nnoremap ; :
-
 " Edit vimrc shortcut
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
@@ -179,9 +175,6 @@ inoremap <C-u> <esc>viwUi
 
 " Shortcut to replace last search
 noremap <leader>r :%s///gc<left><left><left>
-
-" Startify shortcut
-noremap <leader>st :Startify<CR>
 
 " Fzf shortcuts
 noremap <leader>a :Ag<CR>
@@ -215,7 +208,6 @@ noremap <leader>p :Explore<CR>
 
 " Fast saving
 nmap <leader>w :w!<CR>
-nnoremap s :w<CR>
 
 " Sudo write in case of permission denied
 command! W w !sudo tee % > /dev/null
@@ -238,6 +230,9 @@ augroup go_file
     autocmd!
     let g:go_fmt_command = "goimports"
     let g:go_highlight_types = 1
+    let g:go_highlight_build_constraints = 1
+    let g:go_highlight_generate_tags = 1
+    let g:go_auto_type_info = 1
     let g:go_highlight_functions = 1
     let g:go_highlight_fields = 1
     let g:go_highlight_function_calls = 1
@@ -268,15 +263,13 @@ augroup END
 
 " Sneak
 let g:sneak#label = 1
-map <CR> <Plug>Sneak_;
-nmap <space> <Plug>Sneak_s
+nmap <leader><leader> <Plug>Sneak_,
 
 " Netrw config
 let g:netrw_liststyle = 3
 
 " FZF settings
 let g:fzf_layout = { 'down': '~20%' }
-nnoremap <leader>$ :Tags<CR>
 nnoremap <C-p> :GFiles<CR>
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
