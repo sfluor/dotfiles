@@ -60,8 +60,8 @@ syntax enable
 " -----------------
 " General settings
 " -----------------
-" Display line number
-set number
+" Display relative number
+set number relativenumber
 
 " Keep buffers hidden when not used
 set hidden
@@ -182,15 +182,6 @@ noremap <leader>/ :Lines<CR>
 noremap <leader>f :Files<CR>
 noremap <leader>b :Buffers<CR>
 
-" Center screen
-nnoremap <space> zz
-
-" Git shortcuts
-noremap <leader>gs :Gstatus<CR>
-noremap <leader>gc :Gcommit -m
-noremap <leader>gpur :Gpull
-noremap <leader>gpus :Gpush
-
 " Disable arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -291,21 +282,3 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Powerline font for the airline module
 let g:airline_powerline_fonts=1
-
-" -----------------
-" Custom Functions
-" -----------------
-
-augroup custom_functions
-    autocmd!
-    command! -nargs=+ Halp :call s:Halp(<f-args>)
-    nnoremap <leader>? :Halp<space>
-
-    function! s:Halp(...)
-        let query = join(a:000, "+")
-        let cmd = 'curl -s cheat.sh/' . &filetype . '/' . query
-        redraw!
-        let &makeprg=cmd
-        make!
-    endfunction
-augroup END
