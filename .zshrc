@@ -37,3 +37,5 @@ dcu () {
 
 source ~/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /Users/sami.tabet/Vrac/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.datadogrc
