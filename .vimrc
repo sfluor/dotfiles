@@ -45,11 +45,14 @@ call plug#end()
 " -----------------
 " General settings
 " -----------------
-filetype plugin indent on
-syntax enable
-
 " Display number
 set number
+
+" Syntax highlighting
+filetype plugin indent on
+syntax enable
+set nocursorcolumn
+set nocursorline
 
 " Keep buffers hidden when not used
 set hidden
@@ -244,6 +247,13 @@ augroup END
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
       \ }
 
 " Sneak
