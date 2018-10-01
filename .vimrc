@@ -16,6 +16,7 @@ Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'zchee/deoplete-go', {'do': 'make'}
+Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/deol.nvim'
@@ -152,6 +153,8 @@ nnoremap g# g#zz
 " Shortcuts
 " -----------------
 
+nnoremap <Space> :noh<CR>
+
 " Exit insert mod quickly
 inoremap jk <esc>
 
@@ -246,7 +249,7 @@ augroup END
 " lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
