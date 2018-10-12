@@ -149,6 +149,13 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+" Disable lines in terminal window
+augroup TerminalStuff
+    " Clear old autocommands
+    autocmd!
+    autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
+
 " -----------------
 " Shortcuts
 " -----------------
@@ -182,8 +189,12 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Shortcut to open deol terminal
-nmap <leader>t :Deol<CR>
+" Shortcut to open terminal
+nmap <leader>t :terminal<CR>
+
+" Remap escape key for terminal and navigation keys
+tnoremap <Esc> <C-\><C-n>
+tnoremap jk <C-\><C-n>
 
 " Shortcut to copy to clipboard
 vmap <leader>y "+y
@@ -199,9 +210,6 @@ command! W w !sudo tee % > /dev/null
 
 " Jump to Buffer utility
 nnoremap gb :ls<CR>:b<Space>
-
-" Map ESC to exit key for deol terminal
-tnoremap <ESC> <C-\><C-n>:q!<CR>:bd bin/zsh<CR>
 
 " Search current selection
 vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
