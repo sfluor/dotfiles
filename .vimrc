@@ -91,6 +91,13 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+" autoindent
+set autoindent
+
+if has("nvim")
+    set inccommand=split
+endif
+
 " Linebreak on 500 characters
 set lbr
 set tw=500
@@ -193,8 +200,10 @@ noremap <Right> <NOP>
 nmap <leader>t :terminal<CR>
 
 " Remap escape key for terminal and navigation keys
-tnoremap <Esc> <C-\><C-n>
-tnoremap jk <C-\><C-n>
+if has("nvim")
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap jk <C-\><C-n>
+endif
 
 " Shortcut to copy to clipboard
 vmap <leader>y "+y
