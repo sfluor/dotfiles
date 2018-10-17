@@ -13,4 +13,4 @@ alias t="task"
 alias -g G="|ag"
 
 # Alias to use the local vagrantfile instead of the global one
-alias lagrant="VAGRANT_CWD=$(pwd) vagrant $@"
+alias lagrant="VAGRANT_CWD=. vagrant $@"
