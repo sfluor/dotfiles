@@ -185,10 +185,9 @@ inoremap <C-u> <esc>viwUi
 noremap <leader>r :%s///gc<left><left><left>
 
 " Fzf shortcuts
-noremap <leader>a :Ag<CR>
-noremap <leader>/ :Lines<CR>
-noremap <leader>f :Files<CR>
-noremap <leader>b :Buffers<CR>
+nnoremap <leader>a :call fzf#vim#ag('', fzf#vim#with_preview('right'))<CR>
+nnoremap <leader>f :call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " Disable arrow keys
 noremap <Up> <NOP>
@@ -284,8 +283,7 @@ nmap <leader><leader> <Plug>Sneak_,
 let g:netrw_liststyle = 3
 
 " FZF settings
-let g:fzf_layout = { 'down': '~20%' }
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
