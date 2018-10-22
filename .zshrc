@@ -25,6 +25,9 @@ export PATH="$HOME/.cargo/bin:$PATH:$GOPATH/bin"
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
+# Use fd for fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
+
 # Docker compose up shortcut
 dcu () {
     if [[ $# -eq 0 ]]
