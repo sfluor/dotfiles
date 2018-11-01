@@ -9,14 +9,10 @@ call plug#begin()
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'Shougo/deoplete.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'posva/vim-vue'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'zchee/deoplete-go', {'do': 'make'}
-Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/deol.nvim'
@@ -24,18 +20,16 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
 Plug 'sheerun/vim-polyglot'
-Plug 'mhinz/vim-startify'
 Plug 'prettier/vim-prettier'
-Plug 'styled-components/vim-styled-components'
 Plug 'chriskempson/base16-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': './install --all', 'merged': 0 }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
-Plug 'justinmk/vim-sneak'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 call plug#end()
 
 " -----------------
@@ -157,11 +151,13 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 
 " Disable lines in terminal window
-augroup TerminalStuff
-    " Clear old autocommands
-    autocmd!
-    autocmd TermOpen * setlocal nonumber norelativenumber
-augroup END
+if has("nvim")
+    augroup TerminalStuff
+        " Clear old autocommands
+        autocmd!
+        autocmd TermOpen * setlocal nonumber norelativenumber
+    augroup END
+endif
 
 " -----------------
 " Shortcuts
@@ -219,9 +215,6 @@ command! W w !sudo tee % > /dev/null
 " Jump to Buffer utility
 nnoremap gb :ls<CR>:b<Space>
 
-" Search current selection
-vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
-
 " -----------------
 " Languages
 " -----------------
@@ -252,15 +245,12 @@ augroup js_file
     autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 augroup END
 
-" Python settings
-augroup py_file
-    autocmd!
-    " autocmd BufWritePost *.py execute ':Black'
-augroup END
-
 " -----------------
 " Plugins configuration
 " -----------------
+
+" supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " lightline
 set laststatus=2
@@ -271,13 +261,9 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'fugitive#head',
       \ },
       \ }
-
-" Sneak
-let g:sneak#label = 1
-nmap <leader><leader> <Plug>Sneak_,
 
 " Netrw config
 let g:netrw_liststyle = 3
@@ -288,15 +274,6 @@ nnoremap <C-p> :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
-
-" Enable deoplete
-let g:deoplete#enable_at_startup = 1
-
-" Deoplete Close autopreview after completion
-augroup autocomplete
-    autocmd!
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-augroup END
 
 " Ulti-snippets
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
