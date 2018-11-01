@@ -134,13 +134,13 @@ if exists('+termguicolors')
   let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
   let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
   set termguicolors
-  set term=xterm-256color
 endif
 colorscheme base16-snazzy
+hi Normal guibg=NONE ctermbg=NONE
 let g:enable_italic_font = 1
 
-" Show context after search
-set scrolloff=10
+" Keep cursor at the center
+set scrolloff=9999
 
 " Center after goto search result
 nnoremap n nzz
