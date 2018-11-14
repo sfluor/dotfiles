@@ -163,6 +163,8 @@ endif
 " Shortcuts
 " -----------------
 
+nnoremap cd :cd<space>
+
 nnoremap <Space> :noh<CR>
 
 " Exit insert mod quickly
