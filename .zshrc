@@ -1,10 +1,6 @@
 # ZSH Theme settings
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="oh-my-via/via"
-# Disable showing time
-export OHMYVIA_TIME_FORMAT=""
-# Disable showing hostname
-export OHMYVIA_CONTEXT_HOSTNAME="empty"
+ZSH_THEME="sfluor/robbira"
 
 # Plugins
 plugins=(
