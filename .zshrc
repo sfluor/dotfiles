@@ -10,6 +10,7 @@ plugins=(
   docker docker-compose vagrant
   zsh-syntax-highlighting
   extract
+  shrink-path
 )
 
 source $ZSH/oh-my-zsh.sh

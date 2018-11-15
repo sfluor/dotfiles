@@ -8,7 +8,8 @@ else
     local user_symbol='$'
 fi
 
-local current_dir='%{$terminfo[bold]$fg[green]%}%20<...<%~%<<%b%f%{$reset_color%}'
+
+local current_dir='%{$terminfo[bold]$fg[green]%}$(shrink_path -f)%{$reset_color%}'
 local git_branch='$(git_prompt_info)%{$reset_color%}'
 local kubecontext='%{$terminfo[bold]$fg[blue]%}$(kubectl config current-context)%{$reset_color%}'
 local ret_status="%(?:%{$fg_bold[green]%}↳ :%{$fg_bold[red]%}↳ )"
