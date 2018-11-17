@@ -203,8 +203,8 @@ if has("nvim")
     tnoremap jk <C-\><C-n>
 endif
 
-" Shortcut to copy to clipboard
-vmap <leader>y "+y
+" Set clipboard to the system one
+set clipboard+=unnamed
 
 " Shortcut to open netrw
 noremap <leader>p :Explore<CR>
