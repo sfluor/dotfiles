@@ -5,33 +5,35 @@ if &compatible
  set nocompatible
 endif
 
-call plug#begin()
-Plug 'Raimondi/delimitMate'
-Plug 'Shougo/deol.nvim'
-Plug 'SirVer/ultisnips'
-Plug 'airblade/vim-gitgutter'
-Plug 'chriskempson/base16-vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'davidhalter/jedi-vim'
-Plug 'ervandew/supertab'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'honza/vim-snippets'
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'do': './install --all', 'merged': 0 }
-Plug 'junegunn/fzf.vim'
-Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'prettier/vim-prettier'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'w0rp/ale'
-call plug#end()
+if !empty(glob('~/.vim/autoload/plug.vim'))
+    call plug#begin()
+    Plug 'Raimondi/delimitMate'
+    Plug 'Shougo/deol.nvim'
+    Plug 'SirVer/ultisnips'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'chriskempson/base16-vim'
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'davidhalter/jedi-vim'
+    Plug 'ervandew/supertab'
+    Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    Plug 'honza/vim-snippets'
+    Plug 'itchyny/lightline.vim'
+    Plug 'junegunn/fzf', { 'do': './install --all', 'merged': 0 }
+    Plug 'junegunn/fzf.vim'
+    Plug 'mxw/vim-jsx'
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'ntpeters/vim-better-whitespace'
+    Plug 'prettier/vim-prettier'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'w0rp/ale'
+    call plug#end()
+endif
 
 " -----------------
 " End of vim-plug config
@@ -136,7 +138,12 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
   set termguicolors
 endif
-colorscheme base16-snazzy
+try
+    colorscheme base16-snazzy
+catch
+    colorscheme peachpuff
+endtry
+
 hi Normal guibg=NONE ctermbg=NONE
 let g:enable_italic_font = 1
 
