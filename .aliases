@@ -14,3 +14,7 @@ alias -g G="|ag"
 
 # Alias to use the local vagrantfile instead of the global one
 alias lagrant="VAGRANT_CWD=. vagrant $@"
+
+# Git aliases
+alias gcan="git commit --amend --no-edit"
+alias gco='git checkout $(git branch -a | fzf)'

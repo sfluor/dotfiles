@@ -1,0 +1,9 @@
+# Docker compose up shortcut
+dcu () {
+    if [[ $# -eq 0 ]]
+    then
+        docker-compose up
+    else
+        docker-compose -f "$1" up
+    fi
+}

@@ -6,31 +6,31 @@ if &compatible
 endif
 
 call plug#begin()
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'mxw/vim-jsx'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
-Plug 'davidhalter/jedi-vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deol.nvim'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'Raimondi/delimitMate'
-Plug 'sheerun/vim-polyglot'
-Plug 'prettier/vim-prettier'
+Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/supertab'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': './install --all', 'merged': 0 }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-surround'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'ervandew/supertab'
-Plug 'w0rp/ale'
+Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'prettier/vim-prettier'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'w0rp/ale'
 call plug#end()
 
 " -----------------
