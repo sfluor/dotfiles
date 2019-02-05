@@ -8,7 +8,6 @@ endif
 if !empty(glob('~/.vim/autoload/plug.vim'))
     call plug#begin()
     Plug 'Raimondi/delimitMate'
-    Plug 'Shougo/deol.nvim'
     Plug 'SirVer/ultisnips'
     Plug 'airblade/vim-gitgutter'
     Plug 'chriskempson/base16-vim'
@@ -21,9 +20,12 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'junegunn/fzf', { 'do': './install --all', 'merged': 0 }
     Plug 'junegunn/fzf.vim'
     Plug 'mxw/vim-jsx'
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'ncm2/ncm2'
+    Plug 'ncm2/ncm2-go'
+    " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'prettier/vim-prettier'
+    Plug 'rhysd/vim-clang-format'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'sheerun/vim-polyglot'
@@ -60,9 +62,6 @@ nnoremap <C-P> :bprev<CR>
 " Intuitive line moves
 noremap j gj
 noremap k gk
-
-" Syntax highlighting
-syntax on
 
 " Use utf8
 set encoding=utf8
@@ -167,6 +166,9 @@ if has("nvim")
     augroup END
 endif
 
+" Avoid replacing current clipboard when pasting over
+xnoremap p pgvy
+
 " -----------------
 " Shortcuts
 " -----------------
@@ -176,7 +178,7 @@ nnoremap cd :cd<space>
 nnoremap <Space> :noh<CR>
 
 " Exit insert mod quickly
-inoremap jk <esc>
+" inoremap jk <esc>
 
 " Edit vimrc shortcut
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -242,6 +244,9 @@ augroup go_file
     let g:go_highlight_function_calls = 1
     let g:go_highlight_extra_types = 1
     let g:go_highlight_operators = 1
+    let g:go_metalinter_autosave = 1
+    let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+    let g:go_list_type = "quickfix"
     au FileType go nmap <leader>o <Plug>(go-doc)
     au FileType go nmap <leader>in <Plug>(go-info)
 augroup END
@@ -255,28 +260,51 @@ augroup js_file
     autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 augroup END
 
+" C settings
+augroup c_file
+    autocmd!
+    let g:clang_format#code_style = "webkit"
+    let g:clang_format#style_options = {"BreakBeforeBraces" : "Attach"}
+    autocmd BufWritePre *.c,*.h ClangFormat
+augroup END
+
 " -----------------
 " Plugins configuration
 " -----------------
 
-" supertab
-let g:SuperTabDefaultCompletionType = "<c-n>"
+" ale
+let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_prefix = '➤ '
 
 " lightline
+set noshowmode
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'gitbranch', 'readonly', 'relativepath', 'modified' ]
+      \   ],
+      \   'right': [
+      \     [ 'lineinfo' ],
+      \     [ 'percent' ],
+      \     [ 'filetype' ]
+      \   ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
       \ },
-      \ }
+      \}
+
 
 " Netrw config
 let g:netrw_liststyle = 3
+
+" ncm2
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
 " FZF settings
 nnoremap <C-p> :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>
