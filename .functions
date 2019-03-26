@@ -17,9 +17,15 @@ link_sshrc () {
     ln -sf ~/.datadogrc ~/.sshrc.d/.datadogrc
 }
 
+# Fuzzy search on github branches
 fbr() {
-  local branches branch
-  branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+    local branches branch
+    branches=$(git branch -vv) &&
+    branch=$(echo "$branches" | fzf +m) &&
+    git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# scratch creates a new scratch branch
+scratch() {
+    git checkout -b sami/scratch
 }
