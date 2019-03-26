@@ -193,6 +193,8 @@ inoremap <C-u> <esc>viwUi
 noremap <leader>r :%s///gc<left><left><left>
 
 " Fzf shortcuts
+" Word under cursor
+noremap <leader>c :Ag <c-r><c-w><cr>
 nnoremap <leader>a :call fzf#vim#ag('', fzf#vim#with_preview('right'))<CR>
 nnoremap <leader>f :call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
 nnoremap <leader>b :Buffers<CR>
@@ -246,7 +248,6 @@ augroup go_file
     let g:go_highlight_operators = 1
     let g:go_metalinter_autosave = 1
     let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-    let g:go_list_type = "quickfix"
     au FileType go nmap <leader>o <Plug>(go-doc)
     au FileType go nmap <leader>in <Plug>(go-info)
 augroup END
