@@ -42,10 +42,20 @@ export KEYTIMEOUT=1
 
 local current_dir='%{$terminfo[bold]$fg[green]%}$(shrink_path -f)%{$reset_color%}'
 local git_branch='$(git_prompt_info)%{$reset_color%}'
-local kubecontext='%{$terminfo[bold]$fg[blue]%}$(kubectl config current-context)%{$reset_color%}'
+
+kubecontext() {
+    kubectl config current-context
+}
+
+# kubenamespace takes the current context and returns the current namespace
+kubenamespace() {
+    kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${1}\")].context.namespace}"
+}
+
+local kubeprompt='%{$terminfo[bold]$fg[blue]%}$(kubecontext)/$(kubenamespace $(kubecontext))%{$reset_color%}'
 local ret_status="%(?:%{$fg_bold[green]%}↳ :%{$fg_bold[red]%}↳ )"
 
-PROMPT="${user_host} ${current_dir} ${git_branch} ${kubecontext}
+PROMPT="${user_host} ${current_dir} ${git_branch} ${kubeprompt}
 ${ret_status} "
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}["
