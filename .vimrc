@@ -22,6 +22,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'mxw/vim-jsx'
     Plug 'ncm2/ncm2'
     Plug 'ncm2/ncm2-go'
+    Plug 'junegunn/goyo.vim'
     " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'prettier/vim-prettier'
@@ -313,6 +314,32 @@ nnoremap <C-p> :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
+
+let $FZF_DEFAULT_OPTS='--layout=reverse'
+
+" custom fzf floating preview
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = &lines - 3
+  let width = float2nr(&columns - (&columns * 2 / 10))
+  let col = float2nr((&columns - width) / 2)
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': 1,
+        \ 'col': col,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+" no background on fzf preview
+au FileType fzf set nonu nornu
+highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE
 
 " Ulti-snippets
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
