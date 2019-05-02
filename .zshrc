@@ -14,6 +14,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+export EDIITOR="vim"
 
 # Use fd for fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
