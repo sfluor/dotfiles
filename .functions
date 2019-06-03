@@ -25,6 +25,16 @@ fbr() {
     git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
+# get_battery retrieves the % of battery left (for now only macos is implemented)
+get_battery() {
+   pmset -g batt | grep -Eo "\d{1,3}%"
+}
+
+# get_spotify_song retrieves the current song being played on spotify
+get_spotify_song() {
+    spotify status | grep "Artist\|Track" | sed "s/Artist: \(.*\)/(\1)/" | sed "s/Track: \(.*\)/\1/" | tac | tr -d "\n"
+}
+
 # scratch creates a new scratch branch
 scratch() {
     git checkout -b sami/scratch
