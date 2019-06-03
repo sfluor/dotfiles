@@ -23,7 +23,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'ncm2/ncm2'
     Plug 'ncm2/ncm2-go'
     Plug 'junegunn/goyo.vim'
-    " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'prettier/vim-prettier'
     Plug 'rhysd/vim-clang-format'
@@ -37,6 +37,8 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'w0rp/ale'
     call plug#end()
 endif
+
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " -----------------
 " End of vim-plug config
@@ -259,7 +261,7 @@ augroup js_file
     autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
     " prettier
     let g:prettier#autoformat = 0
-    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
 augroup END
 
 " C settings
