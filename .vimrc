@@ -172,6 +172,9 @@ endif
 " Avoid replacing current clipboard when pasting over
 xnoremap p pgvy
 
+" Line numbers colors
+highlight LineNr guifg=#78787e guibg=$BACKGROUND
+
 " -----------------
 " Shortcuts
 " -----------------
@@ -280,11 +283,12 @@ augroup END
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = '➤ '
 
+
 " lightline
 set noshowmode
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'paste' ],
