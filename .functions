@@ -29,3 +29,12 @@ fbr() {
 scratch() {
     git checkout -b sami/scratch
 }
+
+kubecontext() {
+    kubectl config current-context
+}
+
+# kubenamespace takes the current context and returns the current namespace
+kubenamespace() {
+    kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${1}\")].context.namespace}"
+}
