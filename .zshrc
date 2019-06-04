@@ -1,4 +1,3 @@
-# Plugins
 plugins=(
   git
   z
@@ -8,9 +7,9 @@ plugins=(
   shrink-path
 )
 
-source $ZSH/oh-my-zsh.sh
-source ~/.aliases
-source ~/.functions
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source "$ZSH/oh-my-zsh.sh"
+source "$HOME/.aliases"
+source "$HOME/.functions"
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 source ~/Vrac/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.datadogrc
+source "$HOME/.datadogrc"
