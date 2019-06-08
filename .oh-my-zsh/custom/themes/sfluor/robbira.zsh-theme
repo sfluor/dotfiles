@@ -43,7 +43,7 @@ local current_dir='%F{$GREEN_256}$(shrink_path -f)'
 local git_branch='$(git_prompt_info)'
 
 local kubeprompt='%F{$BLUE_256}$(kubecontext)/%F{$CYAN_256}$(kubenamespace $(kubecontext))'
-local ret_status="%(?:%F{$MAGENTA_256}❯ :%F{$RED_256}❯ )"
+local ret_status="%(?:%F{$MAGENTA_256}❯%F{$BLUE_256}❯%F{$CYAN_256}❯ :%F{$RED_256}❯❯❯ )"
 
 PROMPT="${user_host}${current_dir} ${git_branch} ${kubeprompt}
 ${ret_status} "
