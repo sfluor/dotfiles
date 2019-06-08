@@ -39,3 +39,8 @@ kubecontext() {
 kubenamespace() {
     kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${1}\")].context.namespace}"
 }
+
+# func to use the local vagrantfile instead of the global one
+lagrant() {
+    VAGRANT_CWD=$(pwd) vagrant $@
+}
