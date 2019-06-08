@@ -24,6 +24,8 @@ function zle-line-init zle-keymap-select {
     if [ $KEYMAP = vicmd ]; then
         # Command mode
         MODE="%F{$GREEN_256}[N]%{$reset_color%} "
+    else
+        MODE="   "
     fi
 
     RPS1="${MODE} %B${return_code}%b"

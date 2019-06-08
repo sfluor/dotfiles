@@ -288,23 +288,32 @@ let g:ale_virtualtext_prefix = '➤ '
 set noshowmode
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [
-      \     [ 'mode', 'paste' ],
-      \     [ 'gitbranch', 'readonly', 'relativepath', 'modified' ]
-      \   ],
-      \   'right': [
-      \     [ 'lineinfo' ],
-      \     [ 'percent' ],
-      \     [ 'filetype' ]
-      \   ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \ },
-      \}
+    \ 'colorscheme': 'one',
+    \ }
 
+let g:lightline.active = {
+    \ 'left': [ [ 'mode', 'paste'],
+    \           [ 'gitbranch', 'readonly', 'relativepath', 'modified' ],
+    \           ],
+    \ 'right': [ [ 'lineinfo' ],
+    \            [ 'percent' ],
+    \            [ 'filetype' ] ]
+    \ }
+
+let g:lightline.inactive = g:lightline.active
+let g:lightline.mode_map = {
+    \ 'n' : 'N',
+    \ 'i' : 'I',
+    \ 'R' : 'R',
+    \ 'v' : 'V',
+    \ 'V' : 'L',
+    \ "\<C-v>": 'B',
+    \ 'c' : 'C',
+    \ 's' : 'S',
+    \ 'S' : 'S-LINE',
+    \ "\<C-s>": 'S-BLOCK',
+    \ 't': 'T',
+    \ }
 
 " Netrw config
 let g:netrw_liststyle = 3
