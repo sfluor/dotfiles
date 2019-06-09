@@ -12,11 +12,11 @@ dcu () {
 
 link_sshrc () {
     mkdir -p ~/.sshrc.d
-    ln -sf ~/.vimrc ~/.sshrc.d/.vimrc
-    ln -sf ~/.functions ~/.sshrc.d/.functions
-    ln -sf ~/.zshenv ~/.sshrc.d/.zshenv
-    ln -sf ~/.zshrc ~/.sshrc.d/.zshrc
-    ln -sf ~/.aliases ~/.sshrc.d/.aliases
+    ln -sf ~/ssh/.vimrc ~/.sshrc.d/.vimrc
+    ln -sf ~/zsh/.functions ~/.sshrc.d/.functions
+    ln -sf ~/zsh/.zshenv ~/.sshrc.d/.zshenv
+    ln -sf ~/zsh/.zshrc ~/.sshrc.d/.zshrc
+    ln -sf ~/zsh/.aliases ~/.sshrc.d/.aliases
     ln -sf ~/.datadogrc ~/.sshrc.d/.datadogrc
 }
 
