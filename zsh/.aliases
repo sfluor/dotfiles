@@ -15,8 +15,17 @@ fi
 alias v="vim"
 alias t="task"
 
-alias -g G="|ag"
+# handy alias to pipe filter
+if [ -x "$(command -v ag)" ]; then
+    alias -g G="|ag"
+else
+    alias -g G="|grep"
+fi
 
 # Git aliases
 alias gcan="git commit --amend --no-edit"
-alias ssh='sshrc'
+
+# If sshrc is installed setup an alias
+if [ -x "$(command -v sshrc)" ]; then
+    alias ssh='sshrc'
+fi
