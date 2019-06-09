@@ -1,3 +1,5 @@
+# vim: set syntax=zsh:
+
 # Docker compose up shortcut
 dcu () {
     if [[ $# -eq 0 ]]
