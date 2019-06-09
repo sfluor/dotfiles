@@ -2,6 +2,7 @@ plugins=(
   git
   z
   zsh-autosuggestions
+  zsh-syntax-highlighting
   docker docker-compose vagrant
   extract
   shrink-path
