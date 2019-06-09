@@ -38,6 +38,7 @@ export ZSH_THEME="sfluor/robbira"
 ##############
 
 export EDIITOR="vim"
+export ROBBIRA_USER="sami.tabet"
 
 # Use fd for fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
