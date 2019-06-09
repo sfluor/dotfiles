@@ -29,3 +29,8 @@ alias gcan="git commit --amend --no-edit"
 if [ -x "$(command -v sshrc)" ]; then
     alias ssh='sshrc'
 fi
+
+# If neovim is installed alias it to vim
+if [ -x "$(command -v nvim)" ]; then
+    alias vim="nvim"
+fi

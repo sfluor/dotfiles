@@ -1,22 +1,28 @@
-# dotfiles
+# sfluor dotfiles
 
-Sfluor dotfiles
-
-To link the dotfiles simply execute the `dotfiles.sh` script in your home directory:
-`wget -O - https://raw.githubusercontent.com/sfluor/dotfiles/master/dotfiles.sh | sh -`
+Those dotfiles are managed using [stow](https://www.gnu.org/software/stow/), if you want to setup some dotfiles just do `stow <directory>`
 
 ## Git
+
+`stow git`
 
 To setup the git template directory you can do `git config --global init.templatedir "~/.git_template"`
 
 ## Zsh
 
-- Install `zsh-autosuggestions`: `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
-- Instal `zsh-syntax-highlighting`: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
+`stow zsh`
+
+You will need to install:
+- [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/)
+- [z](https://github.com/rupa/z): used to jump around instead of using `cd`
+- `zsh-autosuggestions`: `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+- `zsh-syntax-highlighting`: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
 
 
 ## Vim
 
-### Plugins
+`stow vim`
 
-You will need [vim-plug](https://github.com/junegunn/vim-plug) to be installed (used to manage vim plugins)
+You will need:
+- [vim-plug](https://github.com/junegunn/vim-plug) to be installed (used to manage vim plugins)
+- And you will have to run `:PlugInstall` when starting your vim / neovim session
