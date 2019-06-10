@@ -55,7 +55,6 @@ set number
 filetype plugin indent on
 syntax enable
 set nocursorcolumn
-set nocursorline
 
 " Keep buffers hidden when not used
 set hidden
@@ -173,7 +172,10 @@ endif
 xnoremap p pgvy
 
 " Line numbers colors
+set cursorline
 highlight LineNr guifg=#78787e guibg=$BACKGROUND
+highlight CursorLine guibg=$BACKGROUND
+highlight CursorLineNr guifg=$WHITE guibg=$WHITE
 
 " -----------------
 " Shortcuts
