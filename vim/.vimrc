@@ -5,7 +5,7 @@ if &compatible
  set nocompatible
 endif
 
-if !empty(glob('~/.local/share/nvim/plugged'))
+if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     call plug#begin()
     Plug 'Raimondi/delimitMate'
     Plug 'SirVer/ultisnips'
