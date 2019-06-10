@@ -143,7 +143,7 @@ endif
 try
     colorscheme base16-snazzy
 catch
-    colorscheme peachpuff
+    colorscheme slate
 endtry
 
 hi Normal guibg=NONE ctermbg=NONE
