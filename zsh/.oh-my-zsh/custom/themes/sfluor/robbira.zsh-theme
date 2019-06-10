@@ -49,8 +49,8 @@ else
 fi
 local ret_status="%(?:%F{$MAGENTA_256}❯%F{$BLUE_256}❯%F{$CYAN_256}❯ :%F{$RED_256}❯❯❯ )"
 
-PROMPT="${user_host}${current_dir} ${git_branch} ${kubeprompt}
+PROMPT="${user_host}${current_dir} ${git_branch}${kubeprompt}
 ${ret_status} "
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{$YELLOW_256}["
-ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+ZSH_THEME_GIT_PROMPT_SUFFIX="] "
