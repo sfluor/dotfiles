@@ -3,7 +3,7 @@
 local return_code="%(?..%F{$RED_256}%? ↵)"
 
 if [[ $UID -eq 0 ]] || [[ "$(whoami)" != "$ROBBIRA_USER" ]]; then
-    local user_host="%F{$RED_256}%n% "
+    local user_host="%F{$RED_256}%n%  "
 else
     local user_host=''
 fi
