@@ -15,8 +15,8 @@ To setup the git template directory you can do `git config --global init.templat
 You will need to install:
 - [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/)
 - [z](https://github.com/rupa/z): used to jump around instead of using `cd`
-- `zsh-autosuggestions`: `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
-- `zsh-syntax-highlighting`: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 
 ## Vim
