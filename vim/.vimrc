@@ -288,7 +288,7 @@ let g:ale_virtualtext_prefix = '➤ '
 set noshowmode
 set laststatus=2
 let g:lightline = {
-    \ 'colorscheme': 'one',
+    \ 'colorscheme': 'env',
     \ }
 
 let g:lightline.active = {
