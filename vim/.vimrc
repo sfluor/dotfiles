@@ -12,7 +12,6 @@ if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     Plug 'airblade/vim-gitgutter'
     Plug 'chriskempson/base16-vim'
     Plug 'christoomey/vim-tmux-navigator'
-    Plug 'davidhalter/jedi-vim'
     Plug 'ervandew/supertab'
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
     Plug 'honza/vim-snippets'
@@ -20,10 +19,8 @@ if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     Plug 'junegunn/fzf', { 'do': './install --all', 'merged': 0 }
     Plug 'junegunn/fzf.vim'
     Plug 'mxw/vim-jsx'
-    Plug 'ncm2/ncm2'
-    Plug 'ncm2/ncm2-go'
     Plug 'junegunn/goyo.vim'
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'prettier/vim-prettier'
     Plug 'rhysd/vim-clang-format'
@@ -291,6 +288,9 @@ set noshowmode
 set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'env',
+    \ 'component_function': {
+          \   'gitbranch': 'fugitive#head',
+    \ },
     \ }
 
 let g:lightline.active = {
@@ -319,11 +319,6 @@ let g:lightline.mode_map = {
 
 " Netrw config
 let g:netrw_liststyle = 3
-
-" ncm2
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
 
 " FZF settings
 nnoremap <C-p> :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>
