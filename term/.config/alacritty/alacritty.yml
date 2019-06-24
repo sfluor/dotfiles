@@ -129,51 +129,51 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x121419'
-    foreground: '0xeff0eb'
+    background: '#121419'
+    foreground: '#eff0eb'
 
   # Normal colors
   normal:
-    black:   '0x282a36'
-    red:     '0xff5c57'
-    green:   '0x5af78e'
-    yellow:  '0xf3f99d'
-    blue:    '0x57c7ff'
-    magenta: '0xff6ac1'
-    cyan:    '0x9aedfe'
-    white:   '0xf1f1f0'
+    black:   '#282a36'
+    red:     '#ff5c57'
+    green:   '#5af78e'
+    yellow:  '#f3f99d'
+    blue:    '#57c7ff'
+    magenta: '#ff6ac1'
+    cyan:    '#9aedfe'
+    white:   '#f1f1f0'
 
   # Bright colors
   bright:
-    black:   '0x686868'
-    red:     '0xff5c57'
-    green:   '0x5af78e'
-    yellow:  '0xf3f99d'
-    blue:    '0x57c7ff'
-    magenta: '0xff6ac1'
-    cyan:    '0x9aedfe'
-    white:   '0xf1f1f0'
+    black:   '#686868'
+    red:     '#ff5c57'
+    green:   '#5af78e'
+    yellow:  '#f3f99d'
+    blue:    '#57c7ff'
+    magenta: '#ff6ac1'
+    cyan:    '#9aedfe'
+    white:   '#f1f1f0'
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
   dim:
-    black:   '0x333333'
-    red:     '0xf2777a'
-    green:   '0x99cc99'
-    yellow:  '0xffcc66'
-    blue:    '0x6699cc'
-    magenta: '0xcc99cc'
-    cyan:    '0x66cccc'
-    white:   '0xdddddd'
+    black:   '#333333'
+    red:     '#f2777a'
+    green:   '#99cc99'
+    yellow:  '#ffcc66'
+    blue:    '#6699cc'
+    magenta: '#cc99cc'
+    cyan:    '#66cccc'
+    white:   '#dddddd'
 
   # Indexed Colors
   #
   # The indexed colors include all colors from 16 to 256.
   # When these are not set, they're filled with sensible defaults.
   #indexed_colors:
-  #  - { index: 16, color: '0x000000' }
+  #  - { index: 16, color: '#000000' }
 
 # Visual Bell
 #
