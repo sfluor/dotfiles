@@ -2,7 +2,7 @@
     name = Sami Tabet
     email = sami.tabet@datadoghq.com
 [core]
-    editor = vim
+    editor = nvim
 [github]
     user = sfluor
 [init]
