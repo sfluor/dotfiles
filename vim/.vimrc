@@ -13,7 +13,9 @@ if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     Plug 'chriskempson/base16-vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'ervandew/supertab'
-    Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    if executable("go")
+        Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    endif
     Plug 'honza/vim-snippets'
     Plug 'itchyny/lightline.vim'
     Plug 'junegunn/fzf', { 'do': './install --all', 'merged': 0 }
@@ -55,8 +57,6 @@ set nocursorcolumn
 
 " Keep buffers hidden when not used
 set hidden
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
 
 " Intuitive line moves
 noremap j gj
@@ -233,6 +233,9 @@ command! W w !sudo tee % > /dev/null
 
 " Jump to Buffer utility
 nnoremap gb :ls<CR>:b<Space>
+
+" coc-highlight current word
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " -----------------
 " Languages
