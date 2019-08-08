@@ -13,3 +13,5 @@ source "$HOME/.aliases"
 source "$HOME/.functions"
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 [ -f "$HOME/.datadogrc" ] && source "$HOME/.datadogrc"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
