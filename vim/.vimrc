@@ -221,6 +221,7 @@ endif
 
 " Set clipboard to the system one
 set clipboard+=unnamed
+let g:loaded_clipboard_provider = 1
 
 " Shortcut to open netrw
 noremap <leader>p :Explore<CR>
