@@ -8,6 +8,8 @@ plugins=(
   shrink-path
 )
 
+export PATH="$PATH:$HOME/.local/bin"
+
 source "$ZSH/oh-my-zsh.sh"
 source "$HOME/.aliases"
 source "$HOME/.functions"

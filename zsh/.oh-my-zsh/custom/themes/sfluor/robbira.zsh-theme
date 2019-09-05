@@ -47,7 +47,7 @@ if [ -x "$(command -v kubectl)" ]; then
 else
     local kubepromt=''
 fi
-local ret_status="%(?:%F{$MAGENTA_256}❯%F{$BLUE_256}❯%F{$CYAN_256}❯ :%F{$RED_256}❯❯❯ )"
+local ret_status="%(?:%F{$MAGENTA_256}>%F{$BLUE_256}>%F{$CYAN_256}> :%F{$RED_256}>>> )%F{$WHITE_256}"
 
 PROMPT="${user_host}${current_dir} ${git_branch}${kubeprompt}
 ${ret_status} "
