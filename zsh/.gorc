@@ -1,0 +1,7 @@
+unset GOOS;
+unset GOARCH;
+export GOROOT='/home/sfluor/.gimme/versions/go1.12.2.linux.amd64';
+export PATH="/home/sfluor/.gimme/versions/go1.12.2.linux.amd64/bin:${PATH}";
+go version >&2;
+
+export GIMME_ENV="/home/sfluor/.gimme/envs/go1.12.2.env"
