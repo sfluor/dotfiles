@@ -283,6 +283,7 @@ augroup END
 " -----------------
 
 " ale
+let b:ale_linters = ['flake8', 'mypy']
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = '➤ '
 

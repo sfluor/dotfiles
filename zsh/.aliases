@@ -34,3 +34,5 @@ fi
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
 fi
+
+alias intellij=$HOME/Downloads/idea-IU-192.6603.28/bin/idea.sh
