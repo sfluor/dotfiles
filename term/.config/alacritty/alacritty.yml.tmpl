@@ -1,3 +1,4 @@
+# {{ warning }}
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Any items in the `env` entry below will be added as
@@ -72,19 +73,19 @@ tabspaces: 8
 font:
   # Normal (roman) font face
   normal:
-    family: "Iosevka"
+    family: "{{ font }}"
     # The `style` can be specified to pick a specific face.
     #style: Regular
 
   # Bold font face
   bold:
-    family: "Iosevka"
+    family: "{{ font }}"
     # The `style` can be specified to pick a specific face.
     #style: Bold
 
   # Italic font face
   italic:
-    family: "Iosevka"
+    family: "{{ font }}"
     # The `style` can be specified to pick a specific face.
     #style: Italic
 
@@ -115,50 +116,30 @@ debug:
   render_timer: false
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 # Colors (Snazzy)
 colors:
   # Default colors
   primary:
-    background: '#121419'
-    foreground: '#eff0eb'
+    background: '{{ colors.BACKGROUND }}'
+    foreground: '{{ colors.FOREGROUND }}'
 
   # Normal colors
   normal:
-    black:   '#282a36'
-    red:     '#ff5c57'
-    green:   '#5af78e'
-    yellow:  '#f3f99d'
-    blue:    '#57c7ff'
-    magenta: '#ff6ac1'
-    cyan:    '#9aedfe'
-    white:   '#f1f1f0'
-
-  # Bright colors
-  bright:
-    black:   '#686868'
-    red:     '#ff5c57'
-    green:   '#5af78e'
-    yellow:  '#f3f99d'
-    blue:    '#57c7ff'
-    magenta: '#ff6ac1'
-    cyan:    '#9aedfe'
-    white:   '#f1f1f0'
+    black:   '{{ colors.GREY }}'
+    red:     '{{ colors.RED }}'
+    green:   '{{ colors.GREEN }}'
+    yellow:  '{{ colors.YELLOW }}'
+    blue:    '{{ colors.BLUE }}'
+    magenta: '{{ colors.MAGENTA }}'
+    cyan:    '{{ colors.CYAN }}'
+    white:   '{{ colors.WHITE }}'
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  dim:
-    black:   '#333333'
-    red:     '#f2777a'
-    green:   '#99cc99'
-    yellow:  '#ffcc66'
-    blue:    '#6699cc'
-    magenta: '#cc99cc'
-    cyan:    '#66cccc'
-    white:   '#dddddd'
 
   # Indexed Colors
   #
