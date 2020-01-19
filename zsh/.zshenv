@@ -45,3 +45,12 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Add gopath to the PATH
 export PATH=$PATH:$HOME/go/bin/
+
+export JAVA_HOME=/usr/lib/jvm/java-13-openjdk
+
+unset GOOS;
+unset GOARCH;
+export GOROOT="$HOME/.gimme/versions/go1.13.linux.amd64";
+export PATH="$HOME/.gimme/versions/go1.13.linux.amd64/bin:${PATH}";
+
+export GIMME_ENV="$HOME/.gimme/envs/go1.13.linux.amd64.env";
