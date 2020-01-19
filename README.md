@@ -1,6 +1,10 @@
 # sfluor dotfiles
 
-Those dotfiles are managed using [stow](https://www.gnu.org/software/stow/), if you want to setup some dotfiles just do `stow <directory>`
+Those dotfiles are managed using [stow](https://www.gnu.org/software/stow/), if you want to setup some dotfiles just do `stow <directory>`.
+
+If it's the first time that you use the repo you should run the `apply-theme` script on one of the themes of the `themes directory` to generate the configuration files.
+
+For instance: `./scripts/apply-theme themes/snazzy.json`
 
 ## Git
 
