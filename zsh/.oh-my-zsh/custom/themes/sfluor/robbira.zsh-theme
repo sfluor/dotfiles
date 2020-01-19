@@ -3,7 +3,7 @@
 local return_code="%(?..%F{$RED_256}%? ↵)"
 
 if [[ $UID -eq 0 ]] || [[ "$(whoami)" != "$ROBBIRA_USER" ]]; then
-    local user_host="%F{$RED_256}%n%  "
+    local user_host="%B%F{$RED_256}%n%  %b"
 else
     local user_host=''
 fi
@@ -47,7 +47,7 @@ if [ -x "$(command -v kubectl)" ]; then
 else
     local kubepromt=''
 fi
-local ret_status="%(?:%F{$MAGENTA_256}>%F{$BLUE_256}>%F{$CYAN_256}> :%F{$RED_256}>>> )%F{$WHITE_256}"
+local ret_status="%(?:%B%F{$MAGENTA_256}>%F{$BLUE_256}>%F{$CYAN_256}> %b:%F{$RED_256}>>> )%F{$WHITE_256}"
 
 PROMPT="${user_host}${current_dir} ${git_branch}${kubeprompt}
 ${ret_status} "
