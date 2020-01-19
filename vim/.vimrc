@@ -20,24 +20,15 @@ if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     Plug 'itchyny/lightline.vim'
     Plug 'junegunn/fzf', { 'do': './install --all', 'merged': 0 }
     Plug 'junegunn/fzf.vim'
-    Plug 'mxw/vim-jsx'
-    Plug 'junegunn/goyo.vim'
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
     Plug 'ntpeters/vim-better-whitespace'
-    Plug 'prettier/vim-prettier'
     Plug 'rhysd/vim-clang-format'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'sheerun/vim-polyglot'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
-    Plug 'w0rp/ale'
     call plug#end()
 endif
-
-inoremap <silent><expr> <c-space> coc#refresh()
 
 " -----------------
 " End of vim-plug config
@@ -185,12 +176,6 @@ nnoremap <Space> :noh<CR>
 " Exit insert mod quickly
 " inoremap jk <esc>
 
-" Edit vimrc shortcut
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
-" Source vimrc shortcut
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
 " Uppercase current word in insert mode
 inoremap <C-u> <esc>viwUi
 
@@ -210,33 +195,15 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Shortcut to open terminal
-nmap <leader>t :terminal<CR>
-
-" Remap escape key for terminal and navigation keys
-if has("nvim")
-    tnoremap <Esc> <C-\><C-n>
-    tnoremap jk <C-\><C-n>
-endif
-
 " Set clipboard to the system one
 set clipboard+=unnamed
 let g:loaded_clipboard_provider = 1
-
-" Shortcut to open netrw
-noremap <leader>p :Explore<CR>
-
-" Fast saving
-nmap <leader>w :w!<CR>
 
 " Sudo write in case of permission denied
 command! W w !sudo tee % > /dev/null
 
 " Jump to Buffer utility
 nnoremap gb :ls<CR>:b<Space>
-
-" coc-highlight current word
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " -----------------
 " Languages
@@ -261,15 +228,6 @@ augroup go_file
     au FileType go nmap <leader>in <Plug>(go-info)
 augroup END
 
-" JS settings
-augroup js_file
-    autocmd!
-    autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-    " prettier
-    let g:prettier#autoformat = 0
-    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
-augroup END
-
 " C settings
 augroup c_file
     autocmd!
@@ -281,12 +239,6 @@ augroup END
 " -----------------
 " Plugins configuration
 " -----------------
-
-" ale
-let b:ale_linters = ['flake8', 'mypy']
-let g:ale_virtualtext_cursor = 1
-let g:ale_virtualtext_prefix = '➤ '
-
 
 " lightline
 set noshowmode
