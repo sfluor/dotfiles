@@ -31,7 +31,8 @@ for template in templates:
 
     content = apply_theme(theme, content)
 
-    generated_path = str(template).strip(".tmpl")
+    # Remove .tmpl
+    generated_path = str(template)[:-5]
 
     with open(generated_path, "w") as file:
         file.write(content)

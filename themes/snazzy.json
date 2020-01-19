@@ -1,8 +1,11 @@
 {
     "warning": "/!\\ This is a generated file do not modify ! /!\\",
+    "font": "Iosevka",
     "colors": {
         "BACKGROUND": "#121419",
         "BACKGROUND_256": "16",
+        "FOREGROUND": "#eff0eb",
+
         "WHITE": "#f1f1f0",
         "WHITE_256": "231",
         "GREY": "#282a36",
