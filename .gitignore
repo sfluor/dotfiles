@@ -1,3 +1,5 @@
 # Do not git generated files
 .zshenv
 alacritty.yml
+
+__pycache__/

@@ -1,0 +1,122 @@
+#!/usr/bin/env python
+
+import itertools
+
+levels = [0, 95, 135, 175, 215, 255]
+
+RGB_COLORS = [
+    # Primary 3-bit (8 colors)
+    ("00", 0, 0, 0),
+    ("01", 128, 0, 0),
+    ("02", 0, 128, 0),
+    ("03", 128, 128, 0),
+    ("04", 0, 0, 128),
+    ("05", 128, 0, 128),
+    ("06", 0, 128, 128),
+    ("07", 192, 192, 192),
+    # Bright colors
+    ("08", 128, 128, 128),
+    ("09", 255, 0, 0),
+    ("10", 0, 255, 0),
+    ("11", 255, 255, 0),
+    ("12", 0, 0, 255),
+    ("13", 255, 0, 255),
+    ("14", 0, 255, 255),
+    ("15", 255, 255, 255),
+    # Colors 16-231 use 6 levels (0, 95, 135, 175, 215, 255) of red, green, and blue, ordered lexicographically.
+    *[
+        (str(16 + idx), r, g, b)
+        for idx, (r, g, b) in enumerate(itertools.product(levels, levels, levels))
+    ],
+    # Gray-scale range.
+    *[(str(232 + idx), x, x, x) for idx, x in enumerate(range(8, 248, 10))],
+]
+
+# https://en.wikipedia.org/wiki/YUV
+def rgb2yuv(r, g, b):
+    return (
+        0.299 * r + 0.587 * g + 0.114 * b,
+        -0.14713 * r - 0.28886 * g + 0.436 * b,
+        0.615 * r - 0.51499 * g - 0.100001 * b,
+    )
+
+
+def yuv2rgb(y, u, v):
+    return (
+        int(y + 1.13983 * v),
+        int(y - 0.39465 * u - 0.58060 * v),
+        int(y + 2.03211 * u),
+    )
+
+
+YUV_COLORS = [(idx, *rgb2yuv(r, g, b)) for idx, r, g, b in RGB_COLORS]
+
+
+def closest_256color(r, g, b):
+    y, u, v = rgb2yuv(r, g, b)
+    idx = min(
+        (abs(y2 - y) + abs(u2 - u) + abs(v2 - v), idx)
+        for idx, (_, y2, u2, v2) in enumerate(YUV_COLORS)
+    )[1]
+    return RGB_COLORS[idx]
+
+
+def color_str(color, r, g, b):
+    BG_FMT = "\033[48;5;{0}m {1} \033[0m"
+    COLOR_FMT = "#{0:02x}{1:02x}{2:02x}"
+    return BG_FMT.format(color, COLOR_FMT.format(r, g, b))
+
+
+def print_table():
+    for x in range(16):
+        for y in range(16):
+            color, r, g, b = RGB_COLORS[x + 16 * y]
+            print(color_str(color, r, g, b), end="")
+        print()
+
+
+def setup_parser():
+    parser = argparse.ArgumentParser(description="Helper for 256 colors")
+    parser.add_argument(
+        "-c", "--color", help="Find the closest 256 color for the given color", type=str
+    )
+    parser.add_argument(
+        "-t",
+        "--table",
+        help="Display the 256 colors table",
+        dest="table",
+        action="store_true",
+    )
+
+    return parser
+
+
+if __name__ == "__main__":
+    import argparse
+    import sys
+
+    parser = setup_parser()
+    args = parser.parse_args()
+
+    if args.table:
+        print_table()
+    elif args.color:
+        color = args.color.lstrip("#").replace("0x", "")
+
+        try:
+            assert len(color) == 6
+            hex_color = int(color, 16)
+        except (ValueError, AssertionError):
+            print(
+                f"Expected color in hex format with 3 bytes components (for instance: 0x123123 or #123123 but got: {args.color})"
+            )
+            sys.exit(1)
+
+        r, g, b = hex_color >> 16, (hex_color >> 8) & 0xFF, hex_color & 0xFF
+        result = closest_256color(r, g, b)
+
+        print(
+            f"Closest 256 color for {args.color} is color number {result[0]}: {color_str(*result)}"
+        )
+    else:
+        parser.print_help()
