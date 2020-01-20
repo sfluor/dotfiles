@@ -4,7 +4,14 @@ import json
 import argparse
 import os
 import sys
+import importlib.util as imp
 from pathlib import Path
+
+def load_theme(path):
+    spec = imp.spec_from_file_location("dotfiles.theme", str(path))
+    mod = imp.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.theme
 
 def dotfiles_path():
     return Path(sys.argv[0]).resolve().parent.parent
@@ -47,10 +54,9 @@ def main(theme):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Apply a given theme to the dotfiles')
-    parser.add_argument('theme', type=str, help='path to the theme')
+    parser.add_argument('theme', type=str, help='path to the theme as a python file that implements a `theme` function')
     args = parser.parse_args()
 
-    with Path(args.theme).open() as f:
-        theme = json.load(f)
+    theme_fn = load_theme(args.theme)
 
-    main(theme)
+    main(theme_fn())
