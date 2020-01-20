@@ -11,7 +11,7 @@ def load_theme(path):
     spec = imp.spec_from_file_location("dotfiles.theme", str(path))
     mod = imp.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    return mod.theme
+    return mod.THEME
 
 def dotfiles_path():
     return Path(sys.argv[0]).resolve().parent.parent
@@ -54,9 +54,9 @@ def main(theme):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Apply a given theme to the dotfiles')
-    parser.add_argument('theme', type=str, help='path to the theme as a python file that implements a `theme` function')
+    parser.add_argument('theme', type=str, help='path to the theme as a python file that implements a `generate` function')
     args = parser.parse_args()
 
-    theme_fn = load_theme(args.theme)
+    theme = load_theme(args.theme)
 
-    main(theme_fn())
+    main(theme)

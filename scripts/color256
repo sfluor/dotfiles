@@ -61,7 +61,7 @@ def closest_256color(r, g, b):
     return RGB_COLORS[idx]
 
 
-def color_str(color, r, g, b):
+def color_repr(color, r, g, b):
     BG_FMT = "\033[48;5;{0}m {1} \033[0m"
     COLOR_FMT = "#{0:02x}{1:02x}{2:02x}"
     return BG_FMT.format(color, COLOR_FMT.format(r, g, b))
@@ -71,9 +71,16 @@ def print_table():
     for x in range(16):
         for y in range(16):
             color, r, g, b = RGB_COLORS[x + 16 * y]
-            print(color_str(color, r, g, b), end="")
+            print(color_repr(color, r, g, b), end="")
         print()
 
+def strto256(color):
+    color = color.lstrip("#").replace("0x", "")
+    assert len(color) == 6
+    hex_color = int(color, 16)
+    r, g, b = hex_color >> 16, (hex_color >> 8) & 0xFF, hex_color & 0xFF
+
+    return closest_256color(r, g, b)
 
 def setup_parser():
     parser = argparse.ArgumentParser(description="Helper for 256 colors")
@@ -101,22 +108,16 @@ if __name__ == "__main__":
     if args.table:
         print_table()
     elif args.color:
-        color = args.color.lstrip("#").replace("0x", "")
-
         try:
-            assert len(color) == 6
-            hex_color = int(color, 16)
+            result = strto256(args.color)
         except (ValueError, AssertionError):
             print(
                 f"Expected color in hex format with 3 bytes components (for instance: 0x123123 or #123123 but got: {args.color})"
             )
             sys.exit(1)
 
-        r, g, b = hex_color >> 16, (hex_color >> 8) & 0xFF, hex_color & 0xFF
-        result = closest_256color(r, g, b)
-
         print(
-            f"Closest 256 color for {args.color} is color number {result[0]}: {color_str(*result)}"
+            f"Closest 256 color for {args.color} is color number {result[0]}: {color_repr(*result)}"
         )
     else:
         parser.print_help()
