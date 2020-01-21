@@ -74,6 +74,7 @@ def print_table():
             print(color_repr(color, r, g, b), end="")
         print()
 
+
 def strto256(color):
     color = color.lstrip("#").replace("0x", "")
     assert len(color) == 6
@@ -82,10 +83,18 @@ def strto256(color):
 
     return closest_256color(r, g, b)
 
+
 def setup_parser():
     parser = argparse.ArgumentParser(description="Helper for 256 colors")
     parser.add_argument(
         "-c", "--color", help="Find the closest 256 color for the given color", type=str
+    )
+    parser.add_argument(
+        "-s",
+        "--silent",
+        help="Silent output (output only the color code)",
+        dest="silent",
+        action="store_true",
     )
     parser.add_argument(
         "-t",
@@ -116,8 +125,11 @@ if __name__ == "__main__":
             )
             sys.exit(1)
 
-        print(
-            f"Closest 256 color for {args.color} is color number {result[0]}: {color_repr(*result)}"
-        )
+        if args.silent:
+            print(result[0])
+        else:
+            print(
+                f"Closest 256 color for {args.color} is color number {result[0]}: {color_repr(*result)}"
+            )
     else:
         parser.print_help()
