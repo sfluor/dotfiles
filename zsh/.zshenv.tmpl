@@ -8,33 +8,22 @@
 # ------
 # Colors
 # ------
+#
 export BACKGROUND="{{ colors.BACKGROUND }}"
-export BACKGROUND_256="{{ colors.BACKGROUND_256 }}"
-
-# Snazzy color scheme colors and the 256 closest color
 export WHITE='{{ colors.WHITE }}'
-export WHITE_256='{{ colors.WHITE_256 }}'
 export GREY='{{ colors.GREY }}'
-export GREY_256='{{ colors.GREY_256 }}'
 export RED='{{ colors.RED }}'
-export RED_256='{{ colors.RED_256 }}'
 export GREEN='{{ colors.GREEN }}'
-export GREEN_256='{{ colors.GREEN_256 }}'
 export YELLOW='{{ colors.YELLOW }}'
-export YELLOW_256='{{ colors.YELLOW_256 }}'
 export BLUE='{{ colors.BLUE }}'
-export BLUE_256='{{ colors.BLUE_256 }}'
 export MAGENTA='{{ colors.MAGENTA }}'
-export MAGENTA_256='{{ colors.MAGENTA_256 }}'
 export CYAN='{{ colors.CYAN }}'
-export CYAN_256='{{ colors.CYAN_256 }}'
 
 # ------------------
 # ZSH Theme settings
 # ------------------
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="sfluor/robbira"
-
 
 ##############
 ###  Misc ####
@@ -46,8 +35,12 @@ export ROBBIRA_USER="sami.tabet"
 # Use fd for fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
 
-# Add gopath to the PATH
+# Add gopath and scripts to the PATH
 export PATH=$PATH:$HOME/go/bin/:$HOME/dotfiles/scripts
+
+#################
+###   Paths  ####
+#################
 
 export JAVA_HOME=/usr/lib/jvm/java-13-openjdk
 
