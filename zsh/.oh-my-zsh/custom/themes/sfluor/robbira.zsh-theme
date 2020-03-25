@@ -28,7 +28,7 @@ function zle-line-init zle-keymap-select {
         MODE="   "
     fi
 
-    RPS1="${MODE} %B${return_code}%b"
+    RPS1="${MODE} %B${return_code}%b%{$reset_color%}"
     zle reset-prompt
 }
 

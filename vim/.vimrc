@@ -196,8 +196,8 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Set clipboard to the system one
-set clipboard+=unnamed
-let g:loaded_clipboard_provider = 1
+set clipboard+=unnamedplus
+"let g:loaded_clipboard_provider = 1
 
 " Sudo write in case of permission denied
 command! W w !sudo tee % > /dev/null
