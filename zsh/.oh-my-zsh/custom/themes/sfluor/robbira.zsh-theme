@@ -9,7 +9,7 @@ else
 fi
 
 # Enable vi mode
-bindkey -v
+# bindkey -v
 
 # Restore common used bindings
 bindkey '^P' up-history

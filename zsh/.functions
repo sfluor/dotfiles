@@ -59,3 +59,33 @@ print_colors() {
         fi
     done
 }
+
+note() {
+    directory=${NOTES_DIR:-~/vrac/notes/}
+    today_file="$(date +%F).md"
+
+    full_path="$directory/$today_file"
+
+    # create directory if it does not exist
+    mkdir -p $directory
+
+    # get latest file
+    latest_file="$directory/$(ls -1 $directory | tail -n1)"
+
+    if test -f "$full_path" ; then
+        echo "Recovering existing file at: $full_path"
+        # If today's file do not exist yet
+    else
+        echo "Creating new file at: $full_path"
+        # mark old files as read-only
+        find $directory -name "*.md" -exec chmod -x {} \;
+
+        # copy the content of the latest file
+        echo "# Latest note: \n" >> $full_path
+        cat $latest_file >> $full_path
+        echo "\n# Today" >> $full_path
+    fi
+
+    # open the note
+    $EDITOR $full_path
+}
