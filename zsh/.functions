@@ -74,11 +74,11 @@ note() {
 
     if test -f "$full_path" ; then
         echo "Recovering existing file at: $full_path"
-        # If today's file do not exist yet
+        # If today's file does not exist yet
     else
         echo "Creating new file at: $full_path"
         # mark old files as read-only
-        find $directory -name "*.md" -exec chmod -x {} \;
+        find $directory -name "*.md" -exec chmod 440 {} \;
 
         # copy the content of the latest file
         echo "# Latest note: \n" >> $full_path
