@@ -5,9 +5,11 @@ plugins=(
   zsh-syntax-highlighting
   docker docker-compose vagrant
   extract
+  kubectl
   shrink-path
 )
 
+export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:$HOME/.local/bin"
 
 source "$ZSH/oh-my-zsh.sh"

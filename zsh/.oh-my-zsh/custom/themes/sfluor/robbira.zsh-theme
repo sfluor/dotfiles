@@ -1,15 +1,12 @@
 # vim: set syntax=zsh:
 
-local return_code="%(?..%F{$RED}%? ↵)"
+local return_code="%(?..%F{$RED}[code:%?])"
 
 if [[ $UID -eq 0 ]] || [[ "$(whoami)" != "$ROBBIRA_USER" ]]; then
     local user_host="%B%F{$RED}%n%  %b"
 else
     local user_host=''
 fi
-
-# Enable vi mode
-# bindkey -v
 
 # Restore common used bindings
 bindkey '^P' up-history
@@ -18,23 +15,6 @@ bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
-
-# Custom RPROMPT using the current vi mode
-function zle-line-init zle-keymap-select {
-    if [ $KEYMAP = vicmd ]; then
-        # Command mode
-        MODE="%F{$GREEN}[N]%{$reset_color%} "
-    else
-        MODE="   "
-    fi
-
-    RPS1="${MODE} %B${return_code}%b%{$reset_color%}"
-    zle reset-prompt
-}
-
-# Bind zle events
-zle -N zle-line-init
-zle -N zle-keymap-select
 
 # Set keytimeout to 100ms
 export KEYTIMEOUT=1
@@ -47,9 +27,9 @@ if [ -x "$(command -v kubectl)" ]; then
 else
     local kubepromt=''
 fi
-local ret_status="%(?:%B%F{$MAGENTA}>%F{$BLUE}>%F{$CYAN}> %b:%F{$RED}>>> )%F{$WHITE}"
+local ret_status="%(?:%B%F{$MAGENTA}>%F{$BLUE}>%F{$CYAN}>%b:%F{$RED}>>>) %F{$WHITE}"
 
-PROMPT="${user_host}${current_dir} ${git_branch}${kubeprompt}
+PROMPT="${user_host}${current_dir} ${git_branch}${kubeprompt} ${return_code}
 ${ret_status} "
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{$YELLOW}["
