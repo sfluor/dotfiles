@@ -25,7 +25,7 @@ def plot_hist(
         [(k, v) for k, v in serie.items()], key=itemgetter(1), reverse=reverse
     )
 
-    for key, value in values[:top_n]:
+    for key, value in values[-top_n:]:
         normalized = normalize(value)
         tmpl = f"{{:20.20}} | {{:{size}.{size}}} | {{}}"
         print(tmpl.format(key, char * normalized, value))
@@ -38,8 +38,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Plot a serie from stdin (expected format is two columns key,value as csv)"
     )
-    parser.add_argument("--min-y", "-m", type=float, help="Min value for the histogram")
-    parser.add_argument("--max-y", "-M", type=float, help="Max value for the histogram")
+    parser.add_argument("--min-y", "-m", type=float, help="Min value for the histogram (defaults to 0)")
+    parser.add_argument("--max-y", "-M", type=float, help="Max value for the histogram (defaults to auto)")
     parser.add_argument(
         "--char",
         "-c",
@@ -62,7 +62,14 @@ if __name__ == "__main__":
 
     args = {k: v for k, v in vars(parser.parse_args()).items() if v is not None}
 
-    lines = [line.strip().split(",")[:2] for line in sys.stdin.readlines()]
-    serie = {k: float(v) for (k, v) in lines}
+    lines = sys.stdin.readlines()
+    serie = {}
+    for line in lines:
+        elements = line.strip().split(",")
+        try:
+            k, v = elements
+            serie[k] = float(v.strip())
+        except ValueError:
+            print(f"Error parsing line: '{line.strip()}' (will be ignored)")
 
     plot_hist(serie, **args)

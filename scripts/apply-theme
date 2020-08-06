@@ -7,20 +7,25 @@ import sys
 import importlib.util as imp
 from pathlib import Path
 
+
 def load_theme(path):
     spec = imp.spec_from_file_location("dotfiles.theme", str(path))
     mod = imp.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod.THEME
 
+
 def dotfiles_path():
     return Path(sys.argv[0]).resolve().parent.parent
 
+
 FMT = "{{{{ {} }}}}"
-def apply_theme(theme, content, prefix=''):
+
+
+def apply_theme(theme, content, prefix=""):
 
     for key, value in theme.items():
-        new_prefix = key if not prefix else f'{prefix}.{key}'
+        new_prefix = key if not prefix else f"{prefix}.{key}"
         if isinstance(value, dict):
             content = apply_theme(value, content, prefix=new_prefix)
         else:
@@ -34,7 +39,7 @@ def main(theme):
     templates = list(p.glob("**/*.tmpl"))
 
     print(f"Using the following directory as the root: {p}\n---")
-    print("Found the following templates: \n", ', '.join([str(t) for t in templates]))
+    print("Found the following templates: \n", ", ".join([str(t) for t in templates]))
 
     for template in templates:
         with template.open() as file:
@@ -52,9 +57,14 @@ def main(theme):
 
     print("---\nYou should add the generated files to the .gitignore")
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Apply a given theme to the dotfiles')
-    parser.add_argument('theme', type=str, help='path to the theme as a python file that implements a `generate` function')
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Apply a given theme to the dotfiles")
+    parser.add_argument(
+        "theme",
+        type=str,
+        help="path to the theme as a python file that implements a `generate` function",
+    )
     args = parser.parse_args()
 
     theme = load_theme(args.theme)
