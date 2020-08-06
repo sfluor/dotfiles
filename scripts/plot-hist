@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+from operator import itemgetter
+
+
+def plot_hist(
+    serie, min_y=0, max_y="auto", char="#", size=70, top_n="auto", reverse=False
+):
+    if min_y == "auto":
+        min_y = min(serie.values())
+    if max_y == "auto":
+        max_y = max(serie.values())
+    if top_n == "auto":
+        top_n = len(serie)
+
+    assert max_y != min_y, "All values are equal"
+
+    m = size / (max_y - min_y)
+    p = size - m * max_y
+
+    def normalize(v):
+        return int(m * max(min(v, max_y), min_y) + p)
+
+    values = sorted(
+        [(k, v) for k, v in serie.items()], key=itemgetter(1), reverse=reverse
+    )
+
+    for key, value in values[:top_n]:
+        normalized = normalize(value)
+        tmpl = f"{{:20.20}} | {{:{size}.{size}}} | {{}}"
+        print(tmpl.format(key, char * normalized, value))
+
+
+if __name__ == "__main__":
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(
+        description="Plot a serie from stdin (expected format is two columns key,value as csv)"
+    )
+    parser.add_argument("--min-y", "-m", type=float, help="Min value for the histogram")
+    parser.add_argument("--max-y", "-M", type=float, help="Max value for the histogram")
+    parser.add_argument(
+        "--char",
+        "-c",
+        type=str,
+        help='Token to use to graph the histogram (for instance "#", or ".")',
+    )
+    parser.add_argument(
+        "--size", "-s", type=int, help="Horizontal size of the histogram"
+    )
+    parser.add_argument(
+        "--top-n", "-t", type=int, help="Maximum number of values to show"
+    )
+    parser.add_argument(
+        "--reverse",
+        "-r",
+        dest="reverse",
+        action="store_true",
+        help="Whether results should be showed in reverse order",
+    )
+
+    args = {k: v for k, v in vars(parser.parse_args()).items() if v is not None}
+
+    lines = [line.strip().split(",")[:2] for line in sys.stdin.readlines()]
+    serie = {k: float(v) for (k, v) in lines}
+
+    plot_hist(serie, **args)
