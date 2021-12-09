@@ -24,6 +24,7 @@ fi
 
 # Git aliases
 alias gcan="git commit --amend --no-edit"
+alias gmc="git merge --continue"
 
 # If sshrc is installed setup an alias
 if [ -x "$(command -v sshrc)" ]; then
@@ -34,5 +35,6 @@ fi
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
 fi
+
 
 alias intellij=$HOME/Downloads/idea-IU-192.6603.28/bin/idea.sh

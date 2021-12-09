@@ -55,6 +55,7 @@ noremap k gk
 
 " Use utf8
 set encoding=utf8
+set fileencoding=utf8
 
 " Enable filetype plugins
 filetype plugin on
