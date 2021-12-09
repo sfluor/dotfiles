@@ -65,9 +65,20 @@ if [ -x "$(command -v kubectl)" ]; then
 else
     local kubepromt=''
 fi
+
+suspended_jobs() {
+    if [ -z "$(jobs)" ]; then
+        echo ""
+    else
+        echo "Suspended: {$(jobs | cut -d" " -f6 | tr "\n" "," | sed "s/,$//")}"
+    fi
+}
+
+local suspended_jobs_prompt='%F{$GREEN}$(suspended_jobs)'
+
 local ret_status="%(?:%B%F{$MAGENTA}>%F{$BLUE}>%F{$CYAN}>%b:%F{$RED}>>>) %F{$WHITE}"
 
-PROMPT="${user_host}${current_dir} ${git_branch}${kubeprompt} ${return_code}
+PROMPT="${user_host}${current_dir} ${git_branch}${kubeprompt} ${suspended_jobs_prompt} ${return_code}
 ${ret_status} "
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{$YELLOW}["
