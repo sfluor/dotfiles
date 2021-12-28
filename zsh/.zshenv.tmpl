@@ -29,7 +29,13 @@ export ZSH_THEME="sfluor/robbira"
 ###  Misc ####
 ##############
 
-export EDIITOR="vim"
+if [ -x "$(command -v nvim)" ]; then
+    export VISUAL="nvim"
+else
+    export VISUAL="vim"
+fi
+export EDIITOR="$VISUAL"
+
 export ROBBIRA_USER="sami.tabet"
 
 # Use fd for fzf
