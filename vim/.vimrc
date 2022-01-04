@@ -307,6 +307,7 @@ function! FloatingFZF()
 
   call nvim_open_win(buf, v:true, opts)
 endfunction
+
 " no background on fzf preview
 au FileType fzf set nonu nornu
 highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE
@@ -314,3 +315,23 @@ highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE
 " Ulti-snippets
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Helper to open current file in github
+function OpenGithubLink()
+    let remote = trim(system("git config --get remote.origin.url"))
+    let remote_parts = split(remote, ":")
+    if len(remote_parts) != 2
+        echoerr "Couldn't parse github remote url: " . remote
+        return
+    endif
+
+    let commit = trim(system("git rev-parse HEAD"))
+    let repository = remote_parts[1]
+    let absolute_path = expand("%")
+    let filepath = trim(system("git ls-files --full-name " . absolute_path))
+    let line = line(".")
+    let url = "https://github.com/" . repository . "/blob/" . commit . "/" . filepath . "#L" . line
+    call system("open " . url)
+endfunction
+
+nnoremap gh :call OpenGithubLink()<CR>
