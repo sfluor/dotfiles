@@ -28,3 +28,4 @@ tldr
 tmux
 wget
 zsh
+git-delta
