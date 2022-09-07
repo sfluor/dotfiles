@@ -50,6 +50,7 @@ def main(theme):
         # Remove .tmpl
         generated_path = str(template)[:-5]
 
+        os.makedirs(os.path.dirname(generated_path), exist_ok=True)
         with open(generated_path, "w") as file:
             file.write(content)
 
