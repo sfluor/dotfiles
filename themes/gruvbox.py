@@ -2,7 +2,7 @@ THEME = {
     "warning": "/!\\ This is a generated file do not modify ! /!\\",
     "font": "Iosevka",
     "colors": {
-        "BACKGROUND": "#1d2021",
+        "BACKGROUND": "#121419",
         "FOREGROUND": "#ebdbb2",
         "WHITE": "#fbf1c7",
         "GREY": "#928374",

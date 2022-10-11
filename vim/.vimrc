@@ -9,6 +9,7 @@ if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     call plug#begin()
     Plug 'Raimondi/delimitMate'
     Plug 'SirVer/ultisnips'
+    Plug 'justinmk/vim-sneak'
     Plug 'airblade/vim-gitgutter'
     Plug 'chriskempson/base16-vim'
     Plug 'christoomey/vim-tmux-navigator'
@@ -227,6 +228,8 @@ augroup go_file
     let g:go_metalinter_autosave_enabled = ['vet', 'golint']
     au FileType go nmap <leader>o <Plug>(go-doc)
     au FileType go nmap <leader>in <Plug>(go-info)
+    let g:go_def_mode='gopls'
+    let g:go_info_mode='gopls'
 augroup END
 
 " C settings
@@ -335,3 +338,7 @@ function OpenGithubLink()
 endfunction
 
 nnoremap gh :call OpenGithubLink()<CR>
+
+" Replace f by sneak s command
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S

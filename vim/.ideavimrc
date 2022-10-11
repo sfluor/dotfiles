@@ -1,6 +1,7 @@
 set clipboard+=unnamed
 set ignorecase
 set smartcase
+set commentary
 
 " Center after goto search result
 nnoremap n nzz
