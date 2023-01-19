@@ -1,20 +1,19 @@
 require("plugins")
 
-vim.cmd 'colorscheme base16-snazzy'
+vim.cmd("colorscheme base16-snazzy")
 
 -- Helpers
 function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+	vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 function nmap(shortcut, command)
-  map('n', shortcut, command)
+	map("n", shortcut, command)
 end
 
 function imap(shortcut, command)
-  map('i', shortcut, command)
+	map("i", shortcut, command)
 end
-
 
 -------------------
 -- General settings
@@ -52,8 +51,8 @@ vim.g.mapleader = ","
 -- Spaces instead of tabs and be smart with tabs, one tab == 4 spaces
 vim.opt.expandtab = true
 vim.opt.smarttab = true
-vim.opt.shiftwidth=4
-vim.opt.tabstop=4
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 
 -- Autoindent
 vim.opt.autoindent = true
@@ -84,7 +83,7 @@ vim.opt.mouse = "a"
 vim.opt.termguicolors = true
 
 -- Keep cursor at the center
-vim.opt.scrolloff=9999
+vim.opt.scrolloff = 9999
 
 -- Center after goto search result
 nmap("n", "nzz")
@@ -94,23 +93,22 @@ nmap("#", "#zz")
 nmap("g*", "g*zz")
 nmap("g#", "g#zz")
 
-
 -- Avoid replacing current clipboard when pasting over
 map("x", "p", "pgvy")
 
 -- Line numbers colors
 vim.opt.cursorline = true
-vim.api.nvim_set_hl(0, 'LineNr', { fg = "#78787e", bg = vim.env.BACKGROUND})
-vim.api.nvim_set_hl(0, 'CursorLine', { bg = vim.env.BACKGROUND})
-vim.api.nvim_set_hl(0, 'CursorLineNr', { fg= vim.env.BLUE, bg = vim.env.BACKGROUND})
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#78787e", bg = vim.env.BACKGROUND })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = vim.env.BACKGROUND })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = vim.env.BLUE, bg = vim.env.BACKGROUND })
 
-vim.api.nvim_set_hl(0, 'Normal', { fg= NONE, ctermbg = NONE})
+vim.api.nvim_set_hl(0, "Normal", { fg = NONE, ctermbg = NONE })
 
 -- Git gutters
-vim.api.nvim_set_hl(0, 'SignColumn', { bg= NONE, ctermbg = NONE})
-vim.api.nvim_set_hl(0, 'GitGutterAdd', { bg= NONE, fg = vim.env.GREEN})
-vim.api.nvim_set_hl(0, 'GitGutterDelete', { bg= NONE, fg = vim.env.RED})
-vim.api.nvim_set_hl(0, 'GitGutterChange', { bg= NONE, fg = vim.env.MAGENTA})
+vim.api.nvim_set_hl(0, "SignColumn", { bg = NONE, ctermbg = NONE })
+vim.api.nvim_set_hl(0, "GitGutterAdd", { bg = NONE, fg = vim.env.GREEN })
+vim.api.nvim_set_hl(0, "GitGutterDelete", { bg = NONE, fg = vim.env.RED })
+vim.api.nvim_set_hl(0, "GitGutterChange", { bg = NONE, fg = vim.env.MAGENTA })
 
 -------------------
 -- Shortcuts
@@ -138,8 +136,8 @@ nmap("<leader>f", ":call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>")
 nmap("<leader>b", ":Buffers<CR>")
 
 -- Disable arrow keys
-for _, key in pairs({ "up", "down", "left", "right"}) do
-    nmap("<" .. key .. ">", "<NOP>")
+for _, key in pairs({ "up", "down", "left", "right" }) do
+	nmap("<" .. key .. ">", "<NOP>")
 end
 
 -- Use system clipboard
@@ -156,36 +154,72 @@ vim.api.nvim_create_user_command("W", "w !sudo tee % > /dev/null", {})
 vim.opt.showmode = false
 vim.opt.laststatus = 2
 lightline_cfg = {
-    left = {
-        {"mode", "paste"},
-        {"gitbranch", "readonly", "relativepath", "modified"},
-    },
-    right = {
-        {"lineinfo"},
-        {"percent"},
-        {"filetype"},
-    },
+	left = {
+		{ "mode", "paste" },
+		{ "gitbranch", "readonly", "relativepath", "modified" },
+	},
+	right = {
+		{ "lineinfo" },
+		{ "percent" },
+		{ "filetype" },
+	},
 }
 
 vim.g["lightline"] = {
-    colorscheme = "env",
-    component_function = {
-        gitbranch = "fugitive#head"
-    },
-    active = lightline_cfg,
-    inactive = lightline_cfg,
-    mode_map = {
-        n = "N",
-        i = "I",
-        R = "R",
-        v = "V",
-        V = "L",
-        ["<C-v>"] = "B",
-        c = "C",
-        s = "S",
-        S = "S-LINE",
-        ["<C-s>"]= "S-BLOCK",
-        t= "T"
-    }
+	colorscheme = "env",
+	component_function = {
+		gitbranch = "fugitive#head",
+	},
+	active = lightline_cfg,
+	inactive = lightline_cfg,
+	mode_map = {
+		n = "N",
+		i = "I",
+		R = "R",
+		v = "V",
+		V = "L",
+		["<C-v>"] = "B",
+		c = "C",
+		s = "S",
+		S = "S-LINE",
+		["<C-s>"] = "S-BLOCK",
+		t = "T",
+	},
 }
 vim.g.netrw_liststyle = 3
+
+----------------
+-- Plugins
+----------------
+
+-- Setup LSP
+require("mason").setup()
+
+-- Formatting plugin: https://github.com/jose-elias-alvarez/null-ls.nvim
+local null_ls = require("null-ls")
+-- Setup format on save
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+null_ls.setup({
+	sources = {
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.completion.spell,
+	},
+	-- you can reuse a shared lspconfig on_attach callback here
+	on_attach = function(client, bufnr)
+		if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({
+						bufnr = bufnr,
+						filter = function(client)
+							return client.name == "null-ls"
+						end,
+					})
+				end,
+			})
+		end
+	end,
+})
