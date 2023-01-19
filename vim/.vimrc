@@ -338,7 +338,3 @@ function OpenGithubLink()
 endfunction
 
 nnoremap gh :call OpenGithubLink()<CR>
-
-" Replace f by sneak s command
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
