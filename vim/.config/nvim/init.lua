@@ -194,6 +194,9 @@ vim.g.netrw_liststyle = 3
 
 -- Setup LSP
 require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {"gopls"}
+})
 
 -- Formatting plugin: https://github.com/jose-elias-alvarez/null-ls.nvim
 local null_ls = require("null-ls")
@@ -202,6 +205,9 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.gofmt,
+		null_ls.builtins.formatting.goimports,
+		null_ls.builtins.formatting.goimports_reviser,
 		null_ls.builtins.completion.spell,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
