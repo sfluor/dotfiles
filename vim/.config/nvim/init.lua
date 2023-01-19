@@ -1,4 +1,6 @@
--- vim.cmd('source ~/.vimrc')
+require("plugins")
+
+vim.cmd 'colorscheme base16-snazzy'
 
 -- Helpers
 function map(mode, shortcut, command)
@@ -21,9 +23,7 @@ end
 -- Display numbers
 vim.opt.number = true
 
--- Syntax highlighting
--- TODO : filetype plugin indent on
--- TODO: syntax enable
+-- Disable column cursor
 vim.opt.cursorcolumn = false
 
 -- Keep buffers hidden when not used
@@ -102,8 +102,15 @@ map("x", "p", "pgvy")
 vim.opt.cursorline = true
 vim.api.nvim_set_hl(0, 'LineNr', { fg = "#78787e", bg = vim.env.BACKGROUND})
 vim.api.nvim_set_hl(0, 'CursorLine', { bg = vim.env.BACKGROUND})
-vim.api.nvim_set_hl(0, 'CursorLineNr', { fg= vim.env.RED, bg = vim.env.BACKGROUND})
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg= vim.env.BLUE, bg = vim.env.BACKGROUND})
 
+vim.api.nvim_set_hl(0, 'Normal', { fg= NONE, ctermbg = NONE})
+
+-- Git gutters
+vim.api.nvim_set_hl(0, 'SignColumn', { bg= NONE, ctermbg = NONE})
+vim.api.nvim_set_hl(0, 'GitGutterAdd', { bg= NONE, fg = vim.env.GREEN})
+vim.api.nvim_set_hl(0, 'GitGutterDelete', { bg= NONE, fg = vim.env.RED})
+vim.api.nvim_set_hl(0, 'GitGutterChange', { bg= NONE, fg = vim.env.MAGENTA})
 
 -------------------
 -- Shortcuts
@@ -119,6 +126,8 @@ imap("<C-u>", "<esc>viwUi")
 nmap("<leader>r", ":%s///gc<left><left><left>")
 
 -- FZF shortcuts
+-- Files
+nmap("<C-p>", ":call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>")
 -- Word under cursor
 nmap("<leader>c", ":Ag <c-r><c-w><cr>")
 -- Any word
@@ -146,13 +155,7 @@ vim.api.nvim_create_user_command("W", "w !sudo tee % > /dev/null", {})
 -- Lightline
 vim.opt.showmode = false
 vim.opt.laststatus = 2
-vim.g.lightline = {
-    colorscheme = "env",
-    component_function = {
-        gitbranch = "fugitive#head"
-    },
-}
-vim.g.lightline.active = {
+lightline_cfg = {
     left = {
         {"mode", "paste"},
         {"gitbranch", "readonly", "relativepath", "modified"},
@@ -163,19 +166,26 @@ vim.g.lightline.active = {
         {"filetype"},
     },
 }
-vim.g.lightline.inactive = vim.g.lightline.active
-vim.g.lightline.mode_map = {
-    n = "N",
-    i = "I",
-    R = "R",
-    v = "V",
-    V = "L",
-    ["<C-v>"] = "B",
-    c = "C",
-    s = "S",
-    S = "S-LINE",
-    ["<C-s>"]= "S-BLOCK",
-    t= "T"
-}
 
+vim.g["lightline"] = {
+    colorscheme = "env",
+    component_function = {
+        gitbranch = "fugitive#head"
+    },
+    active = lightline_cfg,
+    inactive = lightline_cfg,
+    mode_map = {
+        n = "N",
+        i = "I",
+        R = "R",
+        v = "V",
+        V = "L",
+        ["<C-v>"] = "B",
+        c = "C",
+        s = "S",
+        S = "S-LINE",
+        ["<C-s>"]= "S-BLOCK",
+        t= "T"
+    }
+}
 vim.g.netrw_liststyle = 3

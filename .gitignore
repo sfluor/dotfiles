@@ -3,3 +3,4 @@
 alacritty.yml
 
 __pycache__/
+vim/.config/nvim/plugin/packer_compiled.lua
