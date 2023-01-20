@@ -193,39 +193,14 @@ vim.g.netrw_liststyle = 3
 ----------------
 
 -- Setup LSP
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = {"gopls"}
-})
+-- -- Learn to configure LSP servers, see :help lsp-zero-api-showcase
+local lsp = require('lsp-zero')
+lsp.preset('recommended')
 
--- Formatting plugin: https://github.com/jose-elias-alvarez/null-ls.nvim
-local null_ls = require("null-ls")
--- Setup format on save
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.goimports,
-		null_ls.builtins.formatting.goimports_reviser,
-		null_ls.builtins.completion.spell,
-	},
-	-- you can reuse a shared lspconfig on_attach callback here
-	on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/formatting") then
-			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({
-						bufnr = bufnr,
-						filter = function(client)
-							return client.name == "null-ls"
-						end,
-					})
-				end,
-			})
-		end
-	end,
-})
+-- (Optional) Configure lua language server for neovim
+lsp.nvim_workspace()
+
+lsp.setup()
+
+-- Auto format on save from: https://www.jvt.me/posts/2022/03/01/neovim-format-on-save/
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
