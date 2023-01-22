@@ -36,7 +36,8 @@ let s:p.tabline.right = copy(s:p.normal.left)
 let s:p.command.left = [ [ s:bg, s:yellow ], [ s:lightgrey, s:bg ] ]
 let s:p.command.right = copy(s:p.command.left)
 
-let s:p.normal.error = [ [ s:red, s:bg ] ]
-let s:p.normal.warning = [ [ s:yellow, s:bg ] ]
+let s:p.normal.info = [ [ s:blue, s:bg ] ]
+let s:p.normal.error = [ [ s:bg, s:red ] ]
+let s:p.normal.warning = [ [ s:bg, s:yellow ] ]
 
 let g:lightline#colorscheme#env#palette = lightline#colorscheme#flatten(s:p)
