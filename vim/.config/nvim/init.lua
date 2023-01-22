@@ -204,3 +204,24 @@ lsp.setup()
 
 -- Auto format on save from: https://www.jvt.me/posts/2022/03/01/neovim-format-on-save/
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+
+-- Tree sitter
+require('nvim-treesitter.configs').setup {
+	-- A list of parser names, or "all" (the four listed parsers should always be installed)
+	ensure_installed = { "c", "lua", "vim", "help", "go", "javascript", "python", "dockerfile", "css", "markdown", "html",
+		"zig" },
+
+	-- Install parsers synchronously (only applied to `ensure_installed`)
+	sync_install = false,
+
+	highlight = {
+		-- `false` will disable the whole extension
+		enable = true,
+
+		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+		-- Using this option may slow down your editor, and you may see some duplicate highlights.
+		-- Instead of true it can also be a list of languages
+		additional_vim_regex_highlighting = false,
+	},
+}
