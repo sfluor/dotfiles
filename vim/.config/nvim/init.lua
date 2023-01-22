@@ -197,6 +197,9 @@ vim.g.netrw_liststyle = 3
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
+-- Quick rename
+map("n", "<leader>r", ":lua vim.lsp.buf.rename()<CR>")
+
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 
