@@ -13,4 +13,4 @@ lsp.nvim_workspace()
 lsp.setup()
 
 -- Auto format on save from: https://www.jvt.me/posts/2022/03/01/neovim-format-on-save/
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
