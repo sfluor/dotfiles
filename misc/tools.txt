@@ -12,12 +12,14 @@ fzf
 gcc
 gimme
 git
+git-delta
 htop
 httpie
 jq
 kubectx
 neovim
 nmap
+rg
 shellcheck
 shpotify
 sshrc
@@ -28,4 +30,3 @@ tldr
 tmux
 wget
 zsh
-git-delta
