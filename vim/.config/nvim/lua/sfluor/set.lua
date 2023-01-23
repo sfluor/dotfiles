@@ -68,10 +68,6 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = vim.env.BLUE, bg = vim.env.BACKGRO
 
 vim.api.nvim_set_hl(0, "Normal", { fg = "none", ctermbg = "none" })
 
--------------------
--- Shortcuts
--------------------
-
 -- Use system clipboard
 vim.opt.clipboard = "unnamedplus"
 
@@ -79,3 +75,9 @@ vim.opt.clipboard = "unnamedplus"
 vim.api.nvim_create_user_command("W", "w !sudo tee % > /dev/null", {})
 
 vim.g.netrw_liststyle = 3
+
+-- Disable swap files and enable undo files
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
+vim.opt.undofile = true
