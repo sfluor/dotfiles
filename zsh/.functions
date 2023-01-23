@@ -95,3 +95,13 @@ note() {
     # open the note
     $EDITOR $full_path
 }
+
+scratch() {
+    filename="$1"
+    if [[ -z "$filename" ]]; then
+        filename="scratch_$(date +%s)"
+    fi
+
+    mkdir -p ~/vrac/scratches/
+    $EDITOR "~/vrac/scratches/$filename.txt"
+}
