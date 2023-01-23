@@ -4,8 +4,7 @@ lsp.preset('recommended')
 -- Quick rename
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 -- Go to next/previous errors
-vim.keymap.set("n", "<leader>n", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<leader>p", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.goto_next, { desc = "Go to next [E]rror" })
 
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
