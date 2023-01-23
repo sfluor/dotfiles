@@ -13,3 +13,6 @@ lsp.setup()
 
 -- Auto format on save from: https://www.jvt.me/posts/2022/03/01/neovim-format-on-save/
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+-- Setup LSP status in the status line
+require("fidget").setup({})

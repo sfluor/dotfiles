@@ -30,6 +30,9 @@ return require("packer").startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' }, -- Required
             { 'rafamadriz/friendly-snippets' }, -- Optional
+
+            -- LSP status in the status line
+            { 'j-hui/fidget.nvim' },
         }
     }
     use("Raimondi/delimitMate")
