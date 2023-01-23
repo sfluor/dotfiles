@@ -68,12 +68,6 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = vim.env.BLUE, bg = vim.env.BACKGRO
 
 vim.api.nvim_set_hl(0, "Normal", { fg = "none", ctermbg = "none" })
 
--- Git gutters
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none", ctermbg = "none" })
-vim.api.nvim_set_hl(0, "GitGutterAdd", { bg = "none", fg = vim.env.GREEN })
-vim.api.nvim_set_hl(0, "GitGutterDelete", { bg = "none", fg = vim.env.RED })
-vim.api.nvim_set_hl(0, "GitGutterChange", { bg = "none", fg = vim.env.MAGENTA })
-
 -------------------
 -- Shortcuts
 -------------------
