@@ -36,8 +36,5 @@ for _, key in pairs({ "up", "down", "left", "right" }) do
     nmap("<" .. key .. ">", "<NOP>")
 end
 
--- Use system clipboard
-vim.opt.clipboard = "unnamedplus"
-
 -- Sudo write in case of permission denied
 vim.api.nvim_create_user_command("W", "w !sudo tee % > /dev/null", {})
