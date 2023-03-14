@@ -2,9 +2,11 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 -- Quick rename
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>R", vim.lsp.buf.rename, { desc = "[R]ename" })
 -- Go to next/previous errors
 vim.keymap.set("n", "<leader>e", vim.diagnostic.goto_next, { desc = "Go to next [E]rror" })
+
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Open diagnostic [L]ogs" })
 
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
