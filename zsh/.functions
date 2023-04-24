@@ -1,5 +1,3 @@
-# vim: set syntax=zsh:
-
 # Docker compose up shortcut
 dcu () {
     if [[ $# -eq 0 ]]
@@ -24,8 +22,8 @@ link_sshrc () {
 # Fuzzy search on github branches
 fbr() {
     local branches branch
-    branches=$(git branch -vv) &&
-    branch=$(echo "$branches" | fzf +m) &&
+    branches=$(git branch -vv --sort=-committerdate) &&
+    branch=$(echo "$branches" | fzf --no-sort) &&
     echo "$branch" | awk '{print $1}' | sed "s/.* //"
 }
 
