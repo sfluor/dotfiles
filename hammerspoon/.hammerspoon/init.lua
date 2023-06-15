@@ -55,9 +55,6 @@ hs.hotkey.bind({ "alt", "shift" }, "R", function()
     end
 end)
 
-hs.hotkey.bind({ "alt", "shift" }, "M", function()
-end)
-
 -- Prefer using Firefox if it's installed (ideally we should grab the default browser from the config)
 BROWSER = "Google Chrome"
 if (hs.application.infoForBundlePath("/Applications/Firefox.app") ~= nil) then
