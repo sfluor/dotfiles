@@ -1,7 +1,7 @@
 -------------------
 -- General settings
 -------------------
-vim.cmd("colorscheme base16-snazzy")
+vim.cmd("colorscheme kanagawa")
 
 -- Display numbers
 vim.opt.number = true
