@@ -1,6 +1,10 @@
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
+-- Quick rename
+vim.keymap.set("n", "<leader>R", vim.lsp.buf.rename, { desc = "[R]ename" })
+-- Go to next/previous errors
+vim.keymap.set("n", "ge", vim.diagnostic.goto_next, { desc = "[G]o to next [E]rror" })
 
 -- LSP mappings
 local mason_lspconfig = require('mason-lspconfig')
@@ -38,6 +42,9 @@ mason_lspconfig.setup_handlers({
         })
     end,
 })
+
+-- Trigger code actions
+vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "[Go] to Code [A]ctions" })
 
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
