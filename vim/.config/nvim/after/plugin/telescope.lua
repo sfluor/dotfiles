@@ -6,6 +6,9 @@ require('telescope').setup {
         layout_config = {
             flip_columns = 180
         },
+        file_ignore_patterns = {
+            ".git/.*",
+        },
         vimgrep_arguments = {
             'rg',
             '--color=never',
@@ -64,36 +67,3 @@ local TelescopeColor = {
 for hl, col in pairs(TelescopeColor) do
     vim.api.nvim_set_hl(0, hl, col)
 end
-
--- LSP mappings
-local mason_lspconfig = require('mason-lspconfig')
-
---  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
-    local lspmap = function(keys, func, desc)
-        if desc then
-            desc = 'LSP: ' .. desc
-        end
-
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-    end
-
-    lspmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    lspmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    lspmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-    lspmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    lspmap('<C-s>', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
-end
-
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-mason_lspconfig.setup_handlers({
-    function(server_name)
-        require('lspconfig')[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-        })
-    end,
-})

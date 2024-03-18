@@ -54,6 +54,7 @@ return require("packer").startup(function(use)
     use("ntpeters/vim-better-whitespace")
     use("tpope/vim-commentary")
     use("tpope/vim-fugitive")
+    use("tpope/vim-rhubarb") -- github
     use("tpope/vim-surround")
     use("tpope/vim-unimpaired")
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
