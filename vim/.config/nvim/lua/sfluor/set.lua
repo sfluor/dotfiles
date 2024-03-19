@@ -1,8 +1,6 @@
 -------------------
 -- General settings
 -------------------
-vim.cmd("colorscheme kanagawa")
-
 -- Display numbers
 vim.opt.number = true
 
@@ -60,13 +58,8 @@ vim.opt.termguicolors = true
 -- Keep cursor at the center
 vim.opt.scrolloff = 9999
 
--- Line numbers colors
-vim.opt.cursorline = true
-vim.api.nvim_set_hl(0, "LineNr", { fg = "#78787e", bg = vim.env.BACKGROUND })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = vim.env.BACKGROUND })
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = vim.env.BLUE, bg = vim.env.BACKGROUND })
-
-vim.api.nvim_set_hl(0, "Normal", { fg = "none", ctermbg = "none" })
+-- Disable cursor line.
+vim.opt.cursorline = false
 
 -- Use system clipboard
 vim.opt.clipboard = "unnamedplus"

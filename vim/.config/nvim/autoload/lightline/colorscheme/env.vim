@@ -1,5 +1,5 @@
 let s:lightgrey = [ '#858db5', 244 ]
-let s:bg = [ $BACKGROUND, 0 ]
+let s:bg = [ '#1f1f28', 0 ]
 let s:white = [ $WHITE, 0 ]
 let s:grey = [ $GREY, 0 ]
 let s:yellow = [ $YELLOW, 0  ]

@@ -48,22 +48,35 @@ vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc 
 vim.keymap.set('n', '<leader>t', '<Cmd>Telescope<CR>', { desc = '[T]elescope' })
 
 
--- Improve colors
-local TelescopeColor = {
-    TelescopeMatching = { fg = vim.env.RED },
-    TelescopeSelection = { fg = vim.env.WHITE, bg = vim.env.BACKGROUND, bold = true },
-    TelescopePromptPrefix = { bg = vim.env.GREY },
-    TelescopePromptNormal = { bg = vim.env.GREY },
-    TelescopeResultsNormal = { bg = vim.env.GREY },
-    TelescopePreviewNormal = { bg = vim.env.GREY },
-    TelescopePromptBorder = { bg = vim.env.GREY, fg = vim.env.WHITE },
-    TelescopeResultsBorder = { bg = vim.env.GREY, fg = vim.env.GREY },
-    TelescopePreviewBorder = { bg = vim.env.GREY, fg = vim.env.GREY },
-    TelescopePromptTitle = { bg = vim.env.MAGENTA, fg = vim.env.GREY },
-    TelescopeResultsTitle = { fg = vim.env.GREY },
-    TelescopePreviewTitle = { bg = vim.env.GREEN, fg = vim.env.GREY },
-}
+-- LSP mappings
+local mason_lspconfig = require('mason-lspconfig')
 
-for hl, col in pairs(TelescopeColor) do
-    vim.api.nvim_set_hl(0, hl, col)
+--  This function gets run when an LSP connects to a particular buffer.
+local on_attach = function(_, bufnr)
+    local lspmap = function(keys, func, desc)
+        if desc then
+            desc = 'LSP: ' .. desc
+        end
+
+        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+    end
+
+    lspmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    lspmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+    lspmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+    lspmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+    lspmap('<C-s>', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
 end
+
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+mason_lspconfig.setup_handlers({
+    function(server_name)
+        require('lspconfig')[server_name].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+    end,
+})
