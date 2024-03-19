@@ -20,7 +20,7 @@ local on_attach = function(_, bufnr)
     end
 
     -- Quick rename
-    lspmap("<C-s>", require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
+    lspmap("gs", require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
     lspmap("<leader>R", vim.lsp.buf.rename, "[R]ename")
     lspmap("<leader>ds", require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
     lspmap("gd", vim.lsp.buf.type_definition, '[Goto] type [D]efinition')
@@ -55,4 +55,4 @@ lsp.setup()
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 -- Setup LSP status in the status line
--- require("fidget").setup({})
+require("fidget").setup({})
