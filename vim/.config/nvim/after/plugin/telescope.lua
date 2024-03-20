@@ -6,6 +6,7 @@ require('telescope').setup {
         layout_config = {
             flip_columns = 180
         },
+        path_display = { "truncate", "smart" },
         file_ignore_patterns = {
             ".git/.*",
         },
@@ -45,7 +46,7 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[S]earch [C]ommands' })
-vim.keymap.set('n', '<leader>t', '<Cmd>Telescope<CR>', { desc = '[T]elescope' })
+vim.keymap.set('n', '<leader>T', '<Cmd>Telescope<CR>', { desc = '[T]elescope' })
 
 
 -- LSP mappings
