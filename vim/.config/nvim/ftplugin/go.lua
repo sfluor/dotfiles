@@ -13,6 +13,7 @@ local gotestquery = vim.treesitter.query.parse_query("go", [[
 local testbuffer = vim.api.nvim_create_buf(false, true)
 
 function RunTest(command)
+    print("Running tests: " .. command)
     local job = vim.fn.jobstart(
         command,
         {

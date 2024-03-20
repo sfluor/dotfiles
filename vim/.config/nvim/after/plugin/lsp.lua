@@ -28,6 +28,7 @@ local on_attach = function(_, bufnr)
     lspmap("ge", vim.diagnostic.goto_next, "[G]o to next [E]rror")
     lspmap("gl", vim.diagnostic.open_float, "Open diagnostic [L]ogs")
     lspmap("gr", require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    lspmap("gk", vim.lsp.buf.hover, 'Hover signature/documentation')
 end
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
