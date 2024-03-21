@@ -24,11 +24,11 @@ function RunTest(command)
             end,
             on_stdout = function(jobid, data, event)
                 print("Test result: ")
-                vim.api.nvim_buf_set_lines(testbuffer, 0, 0, true, data)
+                vim.api.nvim_buf_set_lines(testbuffer, 0, -1, true, data)
             end,
             on_stderr = function(jobid, data, event)
                 print("Couldn't run test: ")
-                vim.api.nvim_buf_set_lines(testbuffer, 0, 0, true, data)
+                vim.api.nvim_buf_set_lines(testbuffer, 0, -1, true, data)
             end
         }
     )

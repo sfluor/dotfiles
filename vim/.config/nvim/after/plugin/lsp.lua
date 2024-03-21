@@ -28,7 +28,8 @@ local on_attach = function(_, bufnr)
     lspmap("ge", vim.diagnostic.goto_next, "[G]o to next [E]rror")
     lspmap("gl", vim.diagnostic.open_float, "Open diagnostic [L]ogs")
     lspmap("gr", require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    lspmap("gk", vim.lsp.buf.hover, 'Hover signature/documentation')
+    lspmap("k", vim.lsp.buf.hover, 'Hover signature/documentation')
+    lspmap("ga", vim.lsp.buf.code_action, "[Go] to Code [A]ctions")
 end
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -43,9 +44,6 @@ mason_lspconfig.setup_handlers({
         })
     end,
 })
-
--- Trigger code actions
-vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "[Go] to Code [A]ctions" })
 
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
