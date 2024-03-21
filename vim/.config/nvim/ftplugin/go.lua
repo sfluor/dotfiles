@@ -68,4 +68,5 @@ function RunCurrentGoTests()
     RunGoTest()
 end
 
-vim.keymap.set("n", "<leader>t", RunCurrentGoTests, { desc = 'Run [T]ests' })
+vim.api.nvim_create_user_command("RunCurrentGoTests", RunCurrentGoTests, {})
+vim.api.nvim_buf_set_keymap(0, "n", "<leader>t", ":RunCurrentGoTests<CR>", { desc = 'Run [T]ests' })
