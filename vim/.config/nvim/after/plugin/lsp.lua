@@ -1,16 +1,11 @@
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
--- Quick rename
-vim.keymap.set("n", "<leader>R", vim.lsp.buf.rename, { desc = "[R]ename" })
--- Go to next/previous errors
-vim.keymap.set("n", "ge", vim.diagnostic.goto_next, { desc = "[G]o to next [E]rror" })
-
--- LSP mappings
-local mason_lspconfig = require('mason-lspconfig')
+-- (Optional) Configure lua language server for neovim
+lsp.nvim_workspace()
 
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+lsp.on_attach(function(_, bufnr)
     local lspmap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
@@ -19,7 +14,6 @@ local on_attach = function(_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    -- Quick rename
     lspmap("gs", require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
     lspmap("<leader>R", vim.lsp.buf.rename, "[R]ename")
     lspmap("gS", require('telescope.builtin').lsp_document_symbols, 'Document [S]ymbols')
@@ -28,25 +22,19 @@ local on_attach = function(_, bufnr)
     lspmap("ge", vim.diagnostic.goto_next, "[G]o to next [E]rror")
     lspmap("gl", vim.diagnostic.open_float, "Open diagnostic [L]ogs")
     lspmap("gr", require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    lspmap("gK", vim.lsp.buf.hover, 'Hover signature/documentation')
+    lspmap("K", vim.lsp.buf.hover, 'Hover signature/documentation')
     lspmap("ga", vim.lsp.buf.code_action, "[Go] to Code [A]ctions")
-end
+end)
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-mason_lspconfig.setup_handlers({
-    function(server_name)
-        require('lspconfig')[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-        })
-    end,
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    -- Replace the language servers listed here
+    -- with the ones you want to install
+    ensure_installed = { 'gopls' },
+    handlers = {
+        lsp.default_setup,
+    },
 })
-
--- (Optional) Configure lua language server for neovim
-lsp.nvim_workspace()
 
 lsp.setup()
 
