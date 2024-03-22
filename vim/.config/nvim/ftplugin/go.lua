@@ -1,4 +1,4 @@
-local gotestquery = vim.treesitter.query.parse_query("go", [[
+local gotestquery = vim.treesitter.query.parse("go", [[
 (function_declaration
   name: (identifier) @funcname (#match? @funcname "(Test|Benchmark).*")
   parameters: (parameter_list
