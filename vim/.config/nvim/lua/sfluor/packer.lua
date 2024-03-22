@@ -44,7 +44,7 @@ return require("packer").startup(function(use)
     use 'vim-test/vim-test'
 
     -- Debugger
-    use 'mfussenegger/nvim-dap'
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio", "folke/neodev.nvim" } }
 
     -- Theme
     use "rebelot/kanagawa.nvim"
