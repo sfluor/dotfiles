@@ -19,8 +19,6 @@ local on_attach = function(_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    print("attaching")
-
     -- Quick rename
     lspmap("gs", require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
     lspmap("<leader>R", vim.lsp.buf.rename, "[R]ename")
@@ -32,7 +30,6 @@ local on_attach = function(_, bufnr)
     lspmap("gr", require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     lspmap("gK", vim.lsp.buf.hover, 'Hover signature/documentation')
     lspmap("ga", vim.lsp.buf.code_action, "[Go] to Code [A]ctions")
-    print("attached")
 end
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
