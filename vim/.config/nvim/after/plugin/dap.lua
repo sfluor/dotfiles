@@ -53,3 +53,9 @@ dap.configurations.go = {
         program = "./${relativeFileDirname}"
     }
 }
+
+vim.keymap.set("n", "<leader>dbs", dapui.setup, { desc = '[D]e[b]ug setup' })
+vim.keymap.set("n", "<leader>dbb", dap.toggle_breakpoint, { desc = '[D]e[b]ug [B]reakpoint' })
+vim.keymap.set("n", "<leader>dbc", dap.continue, { desc = '[D]e[b]ug [C]ontinue / Start' })
+vim.keymap.set("n", "<leader>dbo", dap.step_over, { desc = '[D]e[b]ug Step [O]ver' })
+vim.keymap.set("n", "<leader>dbi", dap.step_over, { desc = '[D]e[b]ug Step [I]nto' })
