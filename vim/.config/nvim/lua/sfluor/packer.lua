@@ -48,7 +48,7 @@ return require("packer").startup(function(use)
     use "rebelot/kanagawa.nvim"
 
     -- Smooth scrolling !
-    use 'karb94/neoscroll.nvim'
+    use 'psliwka/vim-smoothie'
 
     -- Fuzzy Finder (files, lsp, etc)
     use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
