@@ -41,6 +41,8 @@ return require("packer").startup(function(use)
     use("christoomey/vim-tmux-navigator")
     use("itchyny/lightline.vim")
 
+    use 'vim-test/vim-test'
+
     -- Debugger
     use 'mfussenegger/nvim-dap'
 
