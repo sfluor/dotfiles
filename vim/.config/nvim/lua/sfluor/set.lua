@@ -19,7 +19,8 @@ vim.opt.autoread = true
 
 -- With a map leader it's possible to do extra key combinations
 -- like <leader>w saves the current file
-vim.g.mapleader = ","
+vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
+vim.g.mapleader = " "
 
 -- Spaces instead of tabs and be smart with tabs, one tab == 4 spaces
 vim.opt.expandtab = true
@@ -33,8 +34,8 @@ vim.opt.autoindent = true
 -- View replacements dynamically
 vim.opt.inccommand = "split"
 
-vim.opt.ai = true -- auto indent
-vim.opt.si = true -- smart indent
+vim.opt.ai = true   -- auto indent
+vim.opt.si = true   -- smart indent
 vim.opt.wrap = true -- wrap lines
 
 -- Incremental search and smart case
