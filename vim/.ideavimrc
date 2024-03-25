@@ -13,3 +13,14 @@ nnoremap g# g#zz
 
 " For the save actions plugin to work
 nnoremap :w :action com.dubreuia.core.action.ShortcutAction
+
+let mapleader = " "
+
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gs :action GotoSymbol<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap ga :action ShowIntentionActions<CR>
+nnoremap <leader>p :action GotoFile<CR>
+nnoremap <leader>sf :action FindInPath<CR>
+nnoremap <leader>b :action RecentFiles<CR>
+nnoremap <leader>R :action RenameElement<CR>

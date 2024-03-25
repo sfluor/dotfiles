@@ -15,7 +15,7 @@ lsp.on_attach(function(_, bufnr)
     end
 
     lspmap("gs", require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
-    lspmap("<leader>R", vim.lsp.buf.rename, "[R]ename")
+    lspmap("<leader>r", vim.lsp.buf.rename, "[R]ename")
     lspmap("gS", require('telescope.builtin').lsp_document_symbols, 'Document [S]ymbols')
     lspmap("gd", vim.lsp.buf.definition, '[Goto] [D]efinition')
     lspmap("gI", vim.lsp.buf.implementation, '[G]oto [I]mplementation')
