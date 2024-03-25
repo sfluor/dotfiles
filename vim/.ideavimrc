@@ -23,4 +23,5 @@ nnoremap ga :action ShowIntentionActions<CR>
 nnoremap <leader>p :action GotoFile<CR>
 nnoremap <leader>sf :action FindInPath<CR>
 nnoremap <leader>b :action RecentFiles<CR>
-nnoremap <leader>R :action RenameElement<CR>
+nnoremap <leader>r :action RenameElement<CR>
+nnoremap <leader>tn :action Rerun<CR>
