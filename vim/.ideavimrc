@@ -16,6 +16,7 @@ nnoremap :w :action com.dubreuia.core.action.ShortcutAction
 
 let mapleader = " "
 
+
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSymbol<CR>
 nnoremap ge :action GotoNextError<CR>
@@ -25,4 +26,15 @@ nnoremap <leader>p :action GotoFile<CR>
 nnoremap <leader>sf :action FindInPath<CR>
 nnoremap <leader>b :action RecentFiles<CR>
 nnoremap <leader>r :action RenameElement<CR>
-nnoremap <leader>tn :action Rerun<CR>
+nnoremap <leader>tn :action RunContextGroup<CR>
+nnoremap <leader>tr :action Rerun<CR>
+
+nnoremap <leader>at :action ActivateTerminalToolWindow<CR>
+
+" Git
+nnoremap <leader>ga :action Git.Add<CR>
+nnoremap <leader>gcb :action Git.Branches.List<CR>
+nnoremap <leader>gfo :action Git.Fetch<CR>
+nnoremap <leader>gp :action Git.Pull<CR>
+nnoremap <leader>gst :action Git.Stash<CR>
+nnoremap <leader>gm :action Git.Menu<CR>
