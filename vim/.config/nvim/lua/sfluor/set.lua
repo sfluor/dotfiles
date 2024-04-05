@@ -21,6 +21,7 @@ vim.opt.autoread = true
 -- like <leader>w saves the current file
 vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
 vim.g.mapleader = " "
+vim.keymap.set('n', '<leader>w', ":w<CR>", { desc = '[W]rite buffer' })
 
 -- Spaces instead of tabs and be smart with tabs, one tab == 4 spaces
 vim.opt.expandtab = true
