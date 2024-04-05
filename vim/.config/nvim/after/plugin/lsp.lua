@@ -15,11 +15,18 @@ lsp.on_attach(function(_, bufnr)
     end
 
     lspmap("gs", require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
-    lspmap("<leader>r", vim.lsp.buf.rename, "[R]ename")
+    lspmap("<leader>R", vim.lsp.buf.rename, "[R]ename")
     lspmap("gS", require('telescope.builtin').lsp_document_symbols, 'Document [S]ymbols')
     lspmap("gd", vim.lsp.buf.definition, '[Goto] [D]efinition')
     lspmap("gI", vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    lspmap("ge", vim.diagnostic.goto_next, "[G]o to next [E]rror")
+
+    local next = function(severity_lvl)
+        return function()
+            vim.diagnostic.goto_next({ severity = severity_lvl })
+        end
+    end
+    lspmap("ge", next(vim.diagnostic.severity.ERROR), "[G]o to next [E]rror")
+    lspmap("gw", next(vim.diagnostic.severity.WARN), "[G]o to next [W]arning")
     lspmap("gl", vim.diagnostic.open_float, "Open diagnostic [L]ogs")
     lspmap("gr", require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     lspmap("K", vim.lsp.buf.hover, 'Hover signature/documentation')
