@@ -1,0 +1,33 @@
+[
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // Moves
+      "ctrl-j": "editor::HalfPageDown",
+      "ctrl-k": "editor::HalfPageUp",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      // Leader actions
+      "space w": "workspace::Save",
+      "space t": "terminal_panel::ToggleFocus",
+      "space p": "file_finder::Toggle",
+      "space s f": "pane::DeploySearch",
+      // "space b": "RecentFiles shortcut not available"
+      // "space tn": "Run test shortcut not available",
+      "space r": "editor::Rename",
+      // Go to actions
+      "g p": "workspace::ActivateNextPane",
+      "g i": "editor::GoToImplementation",
+      "g r": "editor::FindAllReferences",
+      "g s": "project_symbols::Toggle",
+      "g a": "editor::ToggleCodeActions",
+      "g e": "editor::GoToDiagnostic"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "space space space": "pane::CloseAllItems"
+    }
+  }
+]
