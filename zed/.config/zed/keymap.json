@@ -8,12 +8,14 @@
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       // Leader actions
+      "space space": "command_palette::Toggle",
       "space w": "workspace::Save",
       "space a t": "terminal_panel::ToggleFocus",
       "space p": "file_finder::Toggle",
       "space s f": "pane::DeploySearch",
       // "space b": "RecentFiles shortcut not available"
-      // "space tn": "Run test shortcut not available",
+      "space t r": "task::Rerun",
+      "space t n": "task::Spawn",
       "space r": "editor::Rename",
       // Go to actions
       "g p": "workspace::ActivateNextPane",
