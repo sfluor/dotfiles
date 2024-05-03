@@ -10,6 +10,8 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+nnoremap gj <C-d>zz
+nnoremap gk <C-u>zz
 
 " For the save actions plugin to work
 nnoremap :w :action com.dubreuia.core.action.ShortcutAction
