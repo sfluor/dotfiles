@@ -10,6 +10,8 @@ end
 -- Intuitive line moves
 nmap("j", "gj")
 nmap("k", "gk")
+nmap("gj", "<C-d>")
+nmap("gk", "<C-u>")
 
 -- Center after goto search result
 nmap("n", "nzz")
