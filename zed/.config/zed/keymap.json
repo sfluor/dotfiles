@@ -17,13 +17,15 @@
       "space t r": "task::Rerun",
       "space t n": "task::Spawn",
       "space r": "editor::Rename",
+      "space h u": "editor::RevertSelectedHunks",
       // Go to actions
-      "g p": "workspace::ActivateNextPane",
+      "g k": "workspace::ActivateNextPane",
       "g i": "editor::GoToImplementation",
       "g r": "editor::FindAllReferences",
       "g s": "project_symbols::Toggle",
       "g a": "editor::ToggleCodeActions",
-      "g e": "editor::GoToDiagnostic"
+      "g e": "editor::GoToDiagnostic",
+      "g p": "file_finder::Toggle"
     }
   },
   {
