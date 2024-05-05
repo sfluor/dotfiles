@@ -31,8 +31,12 @@ lsp.on_attach(function(_, bufnr)
     lspmap("gr", require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     lspmap("K", vim.lsp.buf.hover, 'Hover signature/documentation')
     lspmap("ga", vim.lsp.buf.code_action, "[Go] to Code [A]ctions")
-    -- Auto format on save from: https://www.jvt.me/posts/2022/03/01/neovim-format-on-save/
-    vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        group = "Format",
+        buffer = bufnr,
+        callback = vim.lsp.buf.format
+    })
 end)
 
 require('mason').setup({})
