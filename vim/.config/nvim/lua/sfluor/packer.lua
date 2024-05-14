@@ -69,5 +69,6 @@ return require("packer").startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use({ "nvim-treesitter/playground", run = ":TSInstall query" })
     use("mbbill/undotree")
-    use("stevearc/oil.nvim")
+    use('echasnovski/mini.files')
+    use 'nvim-tree/nvim-web-devicons' -- also requires https://www.nerdfonts.com/font-downloads
 end)

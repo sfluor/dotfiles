@@ -1,6 +1,6 @@
 THEME = {
     "warning": "/!\\ This is a generated file do not modify ! /!\\",
-    "font": "Iosevka",
+    "font": "IosevkaTerm Nerd Font",
     "colors": {
         "BACKGROUND": "#121419",
         "FOREGROUND": "#eff0eb",
