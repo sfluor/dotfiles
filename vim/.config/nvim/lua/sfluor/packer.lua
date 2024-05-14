@@ -71,4 +71,5 @@ return require("packer").startup(function(use)
     use("mbbill/undotree")
     use('echasnovski/mini.files')
     use 'nvim-tree/nvim-web-devicons' -- also requires https://www.nerdfonts.com/font-downloads
+    use 'github/copilot.vim'
 end)
