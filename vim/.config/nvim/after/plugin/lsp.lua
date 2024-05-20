@@ -32,6 +32,7 @@ lsp.on_attach(function(_, bufnr)
     lspmap("gr", require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     lspmap("K", vim.lsp.buf.hover, 'Hover signature/documentation')
     lspmap("ga", vim.lsp.buf.code_action, "[Go] to Code [A]ctions")
+    lspmap("<leader>f", vim.lsp.buf.format, "[F]ormat code")
 end)
 
 require('mason').setup({})
