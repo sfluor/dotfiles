@@ -103,3 +103,17 @@ scratch() {
     mkdir -p ~/vrac/scratches/
     $EDITOR "~/vrac/scratches/$filename.txt"
 }
+
+epoch () {
+	if [[ "$1" =~ '^[0-9]+$' ]]
+	then
+		t=$1
+		while [[ $t -gt 4000000000 ]]
+		do
+			t=$(expr $t / 1000)
+		done
+		date -ud @"$t"
+	else
+		date +%s -ud "$1"
+	fi
+}
