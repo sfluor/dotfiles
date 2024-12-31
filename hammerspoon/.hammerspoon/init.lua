@@ -63,7 +63,7 @@ end
 
 mapApplication("Slack", "S")
 mapApplication("GoLand", "G")
-mapApplication("IntelliJ IDEA CE", "I")
+mapApplication("IntelliJ IDEA", "I")
 mapApplication("Postman", "P")
 mapApplication(BROWSER, "B")
 mapApplication("Alacritty", "T")

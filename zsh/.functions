@@ -117,3 +117,9 @@ epoch () {
 		date +%s -ud "$1"
 	fi
 }
+
+fzl () {
+    query=$1
+    shift
+    bzl run $(bzl query "$query" | fzf) $@
+}

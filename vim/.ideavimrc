@@ -13,6 +13,8 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 nnoremap gj <C-d>zz
 nnoremap gk <C-u>zz
+nnoremap gh <C-u>zz
+inoremap jk <Esc>
 
 " For the save actions plugin to work
 nnoremap :w :action com.dubreuia.core.action.ShortcutAction
@@ -20,14 +22,15 @@ nnoremap :w :action com.dubreuia.core.action.ShortcutAction
 let mapleader = " "
 
 
+nnoremap gu :action FileStructurePopup<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSymbol<CR>
 nnoremap ge :action GotoNextError<CR>
 nnoremap ga :action ShowIntentionActions<CR>
 nnoremap gl :action ShowErrorDescription<CR>
-nnoremap <leader>p :action GotoFile<CR>
-nnoremap <leader>sf :action FindInPath<CR>
-nnoremap <leader>b :action RecentFiles<CR>
+nnoremap gf :action FindInPath<CR>
+nnoremap gp :action GotoFile<CR>
+nnoremap gb :action RecentFiles<CR>
 nnoremap <leader>r :action RenameElement<CR>
 nnoremap <leader>tn :action RunContextGroup<CR>
 nnoremap <leader>tr :action Rerun<CR>
