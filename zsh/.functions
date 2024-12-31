@@ -123,3 +123,7 @@ fzl () {
     shift
     bzl run $(bzl query "$query" | fzf) $@
 }
+
+vimux() {
+    tmux capture-pane -pS -32768 | vim -
+}
