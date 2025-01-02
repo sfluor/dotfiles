@@ -127,3 +127,19 @@ fzl () {
 vimux() {
     tmux capture-pane -pS -32768 | vim -
 }
+
+prs() {
+    id=$(gh pr list --author "@me" --limit 100 | fzf | cut -f1)
+    repo=$(gh repo view --json url -q .url)
+    link="$repo/pull/$id"
+    echo "Opening: $link"
+    open $link
+}
+
+merged-prs() {
+    id=$(gh pr list --author "@me" --limit ${1:-1000} --state merged | fzf | cut -f1)
+    repo=$(gh repo view --json url -q .url)
+    link="$repo/pull/$id"
+    echo "Opening: $link"
+    open $link
+}
