@@ -35,11 +35,13 @@ lsp.on_attach(function(_, bufnr)
     lspmap("<leader>f", vim.lsp.buf.format, "[F]ormat code")
 end)
 
+vim.filetype.add({ extension = { templ = "templ" } })
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
-    ensure_installed = { 'gopls' },
+    ensure_installed = { 'gopls', 'templ' },
     handlers = {
         lsp.default_setup,
     },

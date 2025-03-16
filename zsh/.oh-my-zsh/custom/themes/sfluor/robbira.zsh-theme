@@ -22,41 +22,13 @@ export KEYTIMEOUT=1
 local current_dir='%F{$GREEN}$(shrink_path -f)'
 local git_branch='$(git_prompt_info)'
 
-# Helper to print time taken by commands
-# From: https://gist.github.com/knadh/123bca5cfdae8645db750bfb49cb44b0
-function preexec() {
-  cmd_start_time=$(($(date +%s%0N)/1000000))
-}
-
 function precmd() {
-    if [ $cmd_start_time ]; then
-        now=$(($(date +%s%0N)/1000000))
-        local d_ms=$(($now - $cmd_start_time))
-        local d_s=$((d_ms / 1000))
-        local ms=$((d_ms % 1000))
-        local s=$((d_s % 60))
-        local m=$(((d_s / 60) % 60))
-        local h=$((d_s / 3600))
-
-        if   ((h > 0)); then elapsed=${h}h${m}m
-        elif ((m > 0)); then elapsed=${m}m${s}s
-        elif ((s > 9)); then elapsed=${s}.$(printf %03d $ms | cut -c1-2)s # 12.34s
-        elif ((s > 0)); then elapsed=${s}.$(printf %03d $ms)s # 1.234s
-        else elapsed=${ms}ms
-        fi
-
-        unset cmd_start_time
-    else
-        unset elapsed
-    fi
-
     # To ensure that hitting return does not just print the previous time
     if [[ -n "$elapsed" ]]; then
         export RPROMPT="%F{$MAGENTA}${elapsed} %{$reset_color%}"
     else
         export RPROMPT=""
     fi
-
 }
 
 

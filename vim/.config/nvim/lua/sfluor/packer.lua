@@ -72,4 +72,6 @@ return require("packer").startup(function(use)
     use('echasnovski/mini.files')
     use 'nvim-tree/nvim-web-devicons' -- also requires https://www.nerdfonts.com/font-downloads
     use 'github/copilot.vim'
+    use 'luckasRanarison/tailwind-tools.nvim'
+    use 'wuelnerdotexe/vim-astro' -- For Astro projects
 end)

@@ -12,13 +12,13 @@
       "space w": "workspace::Save",
       "space a t": "terminal_panel::ToggleFocus",
       "space p": "file_finder::Toggle",
-      "space s f": "pane::DeploySearch",
       // "space b": "RecentFiles shortcut not available"
       "space t r": "task::Rerun",
       "space t n": "task::Spawn",
       "space r": "editor::Rename",
       "space h u": "editor::RevertSelectedHunks",
       // Go to actions
+      "g f": "pane::DeploySearch",
       "g k": "workspace::ActivateNextPane",
       "g i": "editor::GoToImplementation",
       "g r": "editor::FindAllReferences",
