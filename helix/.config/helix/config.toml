@@ -1,0 +1,19 @@
+theme = "onedarker"
+
+[editor]
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[keys.normal]
+space = { space = ":write" }
+
+[keys.insert]
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+
+[keys.normal.g]
+a = "code_action" # Maps `ga` to show possible code actions
+
+[editor.soft-wrap]
+enable = true
