@@ -17,6 +17,7 @@ map("n", "g#", "g#zz", { desc = "Search partial word backward and center" })
 map("n", "gj", "<C-d>zz", { desc = "Scroll down and center" })
 map("n", "gk", "<C-u>zz", { desc = "Scroll up and center" })
 map("i", "jk", "<Esc>", { desc = "Exit insert mode with jk" })
+map("n", "<cr>", ":w<cr>", { desc = "Quick save" })
 
 -- -- Custom actions
 -- map("n", "ge", ":action GotoNextError<CR>", { desc = "Goto next error" })

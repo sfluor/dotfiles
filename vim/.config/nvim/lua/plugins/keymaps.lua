@@ -3,12 +3,27 @@ return {
     "folke/snacks.nvim",
     keys = {
       -- Top Pickers & Explorer
+      --
       {
-        "gp",
+        "gF",
+        function()
+          Snacks.picker.grep_word()
+        end,
+        desc = "Grep on word",
+      },
+      {
+        "gh",
         function()
           Snacks.picker.smart()
         end,
         desc = "Smart Find Files",
+      },
+      {
+        "gp",
+        function()
+          Snacks.picker.git_files()
+        end,
+        desc = "Find git files",
       },
       {
         "gf",
