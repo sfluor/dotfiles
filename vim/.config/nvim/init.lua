@@ -43,8 +43,17 @@ if vim.g.vscode then
   vim.keymap.set({ "n" }, "<CR>", function()
     vscode.action("workbench.action.files.save")
   end)
+  vim.keymap.set({ "n" }, "gp", function()
+    vscode.action("workbench.action.quickOpen")
+  end)
+  vim.keymap.set({ "n" }, "<space><space>", function()
+    vscode.action("workbench.action.showCommands")
+  end)
   vim.keymap.set({ "n" }, "<space>ft", function()
     vscode.action("terminal.focus")
+  end)
+  vim.keymap.set({ "n" }, "<space>v", function()
+    vscode.action("workbench.action.openView")
   end)
 else
   -- bootstrap lazy.nvim, LazyVim and your plugins
