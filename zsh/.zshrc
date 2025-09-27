@@ -1,22 +1,21 @@
-plugins=(
-  git
-  z
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  docker docker-compose vagrant
-  extract
-  kubectl
-  shrink-path
-)
+# .zshrc
 
-export ZSH="$HOME/.oh-my-zsh"
+
+
+autoload -U compinit; compinit
+autoload -U promptinit; promptinit
+prompt pure
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="$PATH:$HOME/.local/bin"
 
-source "$ZSH/oh-my-zsh.sh"
+source "$HOME/.git.zsh"
 source "$HOME/.aliases"
 source "$HOME/.functions"
+
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 [ -f "$HOME/.gorc" ] && source "$HOME/.gorc"
-[ -f "$HOME/.datadogrc" ] && source "$HOME/.datadogrc"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME/.workrc" ] && source "$HOME/.workrc"
+[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh)"
+[ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"

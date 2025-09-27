@@ -2,11 +2,9 @@
 
 alias tree="tree -C"
 
-alias sshpi="ssh pi@82.243.4.245 -i ~/.ssh/perso_rsa"
-
-if [ -x "$(command -v exa)" ]; then
-    alias ll="exa --long --all"
-    alias l="exa --long"
+if [ -x "$(command -v eza)" ]; then
+    alias ll="eza --long --all"
+    alias l="eza --long"
 else
     alias ll="ls -lah"
     alias l="ls -lh"
@@ -16,8 +14,8 @@ alias v="vim"
 alias t="task"
 
 # handy alias to pipe filter
-if [ -x "$(command -v ag)" ]; then
-    alias -g G="|ag"
+if [ -x "$(command -v rg)" ]; then
+    alias -g G="|rg"
 else
     alias -g G="|grep"
 fi
@@ -35,6 +33,3 @@ fi
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
 fi
-
-
-alias intellij=$HOME/Downloads/idea-IU-192.6603.28/bin/idea.sh

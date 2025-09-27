@@ -46,11 +46,6 @@ kubenamespace() {
     kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${1}\")].context.namespace}"
 }
 
-# func to use the local vagrantfile instead of the global one
-lagrant() {
-    VAGRANT_CWD=$(pwd) vagrant $@
-}
-
 mkd() {
 	mkdir -p "$@" && cd "$_";
 }
@@ -116,12 +111,6 @@ epoch () {
 	else
 		date +%s -ud "$1"
 	fi
-}
-
-fzl () {
-    query=$1
-    shift
-    bzl run $(bzl query "$query" | fzf) $@
 }
 
 vimux() {
