@@ -17,8 +17,8 @@ To setup the git template directory you can do `git config --global init.templat
 `stow zsh`
 
 You will need to install:
-- [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/)
-- [z](https://github.com/rupa/z): used to jump around instead of using `cd`
+- [atuin](https://github.com/atuinsh/atuin)
+- [zoxide](https://github.com/ajeetdsouza/zoxide): used to jump around instead of using `cd`
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
