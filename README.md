@@ -27,6 +27,4 @@ You will need to install:
 
 `stow vim`
 
-You will need:
-- [vim-packer](https://github.com/wbthomason/packer.nvim) to be installed (used to manage vim plugins)
-- And you will have to run `:PackerCompile` and `PackerInstall` when starting your vim / neovim session
+The vim configuration is based on [LazyVim](https://www.lazyvim.org/)

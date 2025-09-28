@@ -1,4 +1,4 @@
-if [ -x "$(command -v go)" ]; then
+if [ -x "$(command -v gimme)" ]; then
   unset GOOS;
   unset GOARCH;
   export GOROOT='/Users/sfluor/.gimme/versions/go1.25.0.darwin.arm64';
