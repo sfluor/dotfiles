@@ -1,10 +1,13 @@
 # .zshrc
 
-
-
 autoload -U compinit; compinit
 autoload -U promptinit; promptinit
 prompt pure
+
+# Vim mode settings and fix backspace
+bindkey -v
+bindkey "^H" backward-delete-char
+bindkey "^?" backward-delete-char
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
