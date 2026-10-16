@@ -21,6 +21,7 @@ You will need to install:
 - [zoxide](https://github.com/ajeetdsouza/zoxide): used to jump around instead of using `cd`
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [pure](https://github.com/sindresorhus/pure)
 
 
 ## Vim
@@ -28,3 +29,9 @@ You will need to install:
 `stow vim`
 
 The vim configuration is based on [LazyVim](https://www.lazyvim.org/)
+
+## Ghostty
+
+`stow ghostty`
+
+Uses the built-in Catppuccin Latte theme.
