@@ -57,12 +57,8 @@ end)
 
 -- Prefer using Firefox if it's installed (ideally we should grab the default browser from the config)
 BROWSER = "Google Chrome"
-if hs.application.infoForBundlePath("/Applications/Firefox.app") ~= nil then
-	BROWSER = "Firefox"
-end
-
 mapApplication("Slack", "S")
-mapApplication("GoLand", "G")
+mapApplication("Visual Studio Code", "G")
 mapApplication("IntelliJ IDEA", "I")
 mapApplication("Postman", "P")
 mapApplication(BROWSER, "B")
