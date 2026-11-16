@@ -35,3 +35,43 @@ The vim configuration is based on [LazyVim](https://www.lazyvim.org/)
 `stow ghostty`
 
 Uses the built-in Catppuccin Latte theme.
+
+## Claude Code
+
+`stow claude`
+
+This links `~/.claude/hooks`. It holds `tmux-claude-state.sh`, which shows the state of a Claude session on its tmux window tab: a yellow `⠿` while it works, a red `!` when it needs you, and a green `●` when it finished while you were in another window. The markers are defined in `tmux/.tmux.conf`.
+
+`~/.claude/settings.json` is not stowed, because Claude Code rewrites it. Add these hooks to it by hand:
+
+```json
+"hooks": {
+  "UserPromptSubmit": [
+    { "hooks": [{ "type": "command", "command": "~/.claude/hooks/tmux-claude-state.sh working" }] }
+  ],
+  "PreToolUse": [
+    {
+      "matcher": "AskUserQuestion|ExitPlanMode",
+      "hooks": [{ "type": "command", "command": "~/.claude/hooks/tmux-claude-state.sh waiting" }]
+    }
+  ],
+  "PostToolUse": [
+    { "hooks": [{ "type": "command", "command": "~/.claude/hooks/tmux-claude-state.sh working" }] }
+  ],
+  "Notification": [
+    {
+      "matcher": "permission_prompt|elicitation_dialog",
+      "hooks": [{ "type": "command", "command": "~/.claude/hooks/tmux-claude-state.sh waiting" }]
+    }
+  ],
+  "Stop": [
+    { "hooks": [{ "type": "command", "command": "~/.claude/hooks/tmux-claude-state.sh done" }] }
+  ],
+  "StopFailure": [
+    { "hooks": [{ "type": "command", "command": "~/.claude/hooks/tmux-claude-state.sh done" }] }
+  ],
+  "SessionEnd": [
+    { "hooks": [{ "type": "command", "command": "~/.claude/hooks/tmux-claude-state.sh clear" }] }
+  ]
+}
+```
